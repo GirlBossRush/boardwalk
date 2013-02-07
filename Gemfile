@@ -10,9 +10,8 @@ gem 'mongoid'
 gem 'bson_ext'
 
 # Javascript
-gem 'ember-rails'
 gem 'jquery-rails'
-
+gem 'backbone-on-rails'
 
 group :development do
   gem 'pry-rails'

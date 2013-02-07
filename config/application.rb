@@ -71,5 +71,6 @@ module Boardwalk
 
     # This fixes some Heroku slug compliation weirdness
     config.assets.initialize_on_precompile = false
+
   end
 end

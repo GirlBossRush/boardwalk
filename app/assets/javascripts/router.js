@@ -1,3 +1,0 @@
-Boardwalk.Router.map(function() {
-
-});
