@@ -1,0 +1,31 @@
+$slow: 500ms
+$medium: 350ms
+$fast: 200ms
+
+$opaque: 1.0
+$translucent: 0.6
+$transparent: 0.0
+
+// Layout defaults
+$footer-height: 40px
+$header-height: 50px
+
+// Z index
+$low-priority: 1
+$medium-priority: 999
+$high-priority: 9999
+
+*
+  +box-sizing(border-box)
+
+html, body
+  font:
+    family: $basic-fonts
+    size: 16px
+  background-color: $background-color
+
+// Correct highlighted text selection
+::selection
+  text-shadow: none
+  color: $white
+  background: $black

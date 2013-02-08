@@ -35,11 +35,13 @@ GEM
       jquery-rails
       rails (>= 3.1)
     bcrypt-ruby (3.0.1)
+    bourbon (3.0.1)
+      sass (>= 3.2.0)
+      thor
     bson (1.8.2)
     bson_ext (1.8.2)
       bson (~> 1.8.2)
     builder (3.0.4)
-    chunky_png (1.2.7)
     coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -48,12 +50,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
-    compass (0.12.2)
-      chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.1)
-    compass-rails (1.0.3)
-      compass (>= 0.12.2, < 0.14)
     eco (1.0.0)
       coffee-script
       eco-source
@@ -63,7 +59,6 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    fssm (0.2.10)
     haml (3.1.7)
     haml_coffee_assets (1.11.1)
       coffee-script (>= 1.0.0)
@@ -155,9 +150,9 @@ PLATFORMS
 DEPENDENCIES
   backbone-on-rails
   bcrypt-ruby (~> 3.0.0)
+  bourbon
   bson_ext
   coffee-rails (~> 3.2.1)
-  compass-rails
   haml
   haml_coffee_assets
   jquery-rails
