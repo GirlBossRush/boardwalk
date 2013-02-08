@@ -66,16 +66,8 @@ test:
       <<: *default_session
       database: boardwalk_test
 
-<% if ENV['MONGOHQ_URL'] %>
-  <% uri = URI.parse(ENV['MONGOHQ_URL']) %>
 production:
-  <<: *defaults
-  sessions:
-    default:
-      <<: *default_session
-      database: <%= uri.path.sub('/','') %>
-      username: <%= uri.user %>
-      password: <%= uri.password %>
-      hosts:
-        - <%= uri.host %>:<%= uri.port %>
-<% end %>
+  uri: <%= ENV['MONGOHQ_URL'] %>
+  max_retries_on_connection_failure: 20
+  persist_in_safe_mode: true
+  skip_version_check: true
