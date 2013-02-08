@@ -1,0 +1,8 @@
+<h1>Boardwalk</h1>
+
+<ul>
+  <% for board in @boards.models: %>
+    <li><%= board.get('name') %></li>
+  <% end %>
+</ul>
+

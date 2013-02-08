@@ -3,7 +3,8 @@ window.Boardwalk =
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: -> alert 'Hello from Backbone!'
-
+  init: ->
+    new Boardwalk.Routers.Boards
+    Backbone.history.start()
 $(document).ready ->
-  Boardwalk.initialize()
+  Boardwalk.init()

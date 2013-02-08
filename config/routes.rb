@@ -1,5 +1,7 @@
 Boardwalk::Application.routes.draw do
-  root to: 'boards#show'
-  resources :boards
+  scope 'api' do
+    resources :boards
+  end
 
+  root to: 'boards#index'
 end
