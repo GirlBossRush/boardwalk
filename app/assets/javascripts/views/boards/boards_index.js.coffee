@@ -5,9 +5,9 @@ class Boardwalk.Views.BoardsIndex extends Backbone.View
   events:
     'submit #new_board': 'createBoard'
 
-  initialize: ->
-    @collection.on('reset', @render, this)
-    @collection.on('add', @appendBoard, this)
+  # initialize: ->
+  #   @collection.on('reset', @render, this)
+  #   @collection.on('add', @appendBoard, this)
 
   render: ->
     $(@el).html(@template())

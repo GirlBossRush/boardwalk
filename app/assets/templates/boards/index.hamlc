@@ -1,5 +1,3 @@
-%h1 Boardwalk
-
 %form#new_board
   %input#new_board_name{type: 'text', name: 'name'}
   %input{type: 'submit', value: 'Add'}

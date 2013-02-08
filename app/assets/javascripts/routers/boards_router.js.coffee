@@ -5,11 +5,11 @@ class Boardwalk.Routers.Boards extends Backbone.Router
 
   initialize: ->
     @collection = new Boardwalk.Collections.Boards()
-    @collection.reset($('#container').data 'boards')
+    @collection.reset($('#data-store').data 'boards')
 
   index: ->
     view = new Boardwalk.Views.BoardsIndex(collection: @collection)
-    $('#container').html(view.render().el)
+    $('#data-store').html(view.render().el)
 
   show: (id) ->
     alert "Board #{id}"
