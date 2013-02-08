@@ -8,7 +8,7 @@ $transparent: 0.0
 
 // Layout defaults
 $footer-height: 40px
-$header-height: 50px
+$header-height: 40px
 
 // Z index
 $low-priority: 1
@@ -23,6 +23,55 @@ html, body
     family: $basic-fonts
     size: 16px
   background-color: $background-color
+  height: 100%
+
+del
+  text-decoration: line-through
+
+sup
+  vertical-align: super
+  font-size: 0.7em
+
+strong
+  font-weight: bold
+
+.clearfix
+  content: "."
+  display: block
+  height: 0
+  clear: both
+  visibility: hidden
+
+.container
+  min-height: 100%
+
+.wrapper
+  padding-bottom: $footer-height
+  overflow: auto
+
+.content
+  margin-top: $header-height
+  padding: 20px 15px
+
+.site-footer
+  clear: both
+  height: $footer-height
+  margin-top: -$footer-height
+  padding: 10px
+  border-top: #222 dotted 1px
+
+  font-size: 0.8em
+
+  .copyright
+    display: inline-block
+
+
+.site-header
+  width: 100%
+  height: $header-height
+  padding: 8px 10px
+  z-index: $medium-priority
+  border-bottom: 1px #222 dotted
 
 // Correct highlighted text selection
 ::selection

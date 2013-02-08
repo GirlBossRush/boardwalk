@@ -4,8 +4,16 @@
     %title Boardwalk
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
+    %meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+    %meta(http-equiv="content-type" content="text/html; charset=UTF-8")
+
     = csrf_meta_tags
 
     = favicon_link_tag(image_path('favicon.png'))
   %body
-    = yield
+    .container
+      .wrapper
+        = render partial: 'shared/header'
+        .content
+          = yield
+    = render partial: 'shared/footer'

@@ -3,6 +3,6 @@ Boardwalk::Application.routes.draw do
     resources :boards
   end
 
-  root to: 'boards#index'
+  root to: 'pages#index'
   match '*path', to: 'boards#index'
 end

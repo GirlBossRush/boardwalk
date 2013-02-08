@@ -1,6 +1,6 @@
 class Boardwalk.Routers.Boards extends Backbone.Router
   routes:
-    '': 'index'
+    'boards/': 'index'
     'boards/:id': 'show'
 
   initialize: ->
