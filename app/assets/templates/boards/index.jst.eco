@@ -1,8 +1,10 @@
 <h1>Boardwalk</h1>
 
-<ul>
-  <% for board in @boards.models: %>
-    <li><%= board.get('name') %></li>
-  <% end %>
+<form id="new_board">
+  <input type='text' name='name' id='new_board_name'>
+  <input type='submit' value='Add'>
+</form>
+
+<ul id="boards">
 </ul>
 

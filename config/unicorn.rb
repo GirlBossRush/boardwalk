@@ -1,10 +1,11 @@
 if ENV["RAILS_ENV"] == "development"
   worker_processes 1
+  timeout 10000
 else
   worker_processes 3
+  timeout 30
 end
 
-timeout 30
 preload_app true
 
 before_fork do |server, worker|

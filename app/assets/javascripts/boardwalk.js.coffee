@@ -5,6 +5,6 @@ window.Boardwalk =
   Routers: {}
   init: ->
     new Boardwalk.Routers.Boards
-    Backbone.history.start()
+    Backbone.history.start(pushState: true)
 $(document).ready ->
   Boardwalk.init()

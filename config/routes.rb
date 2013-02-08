@@ -4,4 +4,5 @@ Boardwalk::Application.routes.draw do
   end
 
   root to: 'boards#index'
+  match '*path', to: 'boards#index'
 end
