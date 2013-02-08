@@ -15,6 +15,9 @@ $low-priority: 1
 $medium-priority: 999
 $high-priority: 9999
 
+$site-background: image-url("worn_dots.png")
+$site-background-size: 200px
+
 *
   +box-sizing(border-box)
 
@@ -23,6 +26,8 @@ html, body
     family: $basic-fonts
     size: 16px
   background-color: $background-color
+  background: $site-background
+  background-size: $site-background-size
   height: 100%
 
 del
