@@ -64,6 +64,11 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     fssm (0.2.10)
+    haml (3.1.7)
+    haml_coffee_assets (1.11.1)
+      coffee-script (>= 1.0.0)
+      sprockets (>= 2.0.3)
+      tilt (>= 1.3.3)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -153,6 +158,8 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 3.2.1)
   compass-rails
+  haml
+  haml_coffee_assets
   jquery-rails
   mongoid
   pry-rails

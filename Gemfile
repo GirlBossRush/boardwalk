@@ -13,11 +13,15 @@ gem 'bson_ext'
 gem 'jquery-rails'
 gem 'backbone-on-rails'
 
+# Templating
+gem 'haml'
+
 group :development do
   gem 'pry-rails'
 end
 
 group :assets do
+  gem 'haml_coffee_assets'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
