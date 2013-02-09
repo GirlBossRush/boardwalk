@@ -7,8 +7,8 @@ $translucent: 0.6
 $transparent: 0.0
 
 // Layout defaults
-$footer-height: 40px
-$header-height: 40px
+$footer-height: 30px
+$header-height: 28px
 
 // Z index
 $low-priority: 1
@@ -26,9 +26,22 @@ html, body
     family: $basic-fonts
     size: 16px
   background-color: $background-color
-  background: $site-background
-  background-size: $site-background-size
+  // background: $site-background
+  // background-size: $site-background-size
   height: 100%
+
+a
+  color: $gray
+  font-weight: bold
+  text-decoration: none
+
+  // Removes Firefox's outline on links.
+  // REFACTOR: This might make keyboard navigation difficult.
+  outline: none
+
+  &:hover
+    color: lighten($gray, 20%)
+    text-decoration: underline
 
 del
   text-decoration: line-through
@@ -62,21 +75,39 @@ strong
   clear: both
   height: $footer-height
   margin-top: -$footer-height
-  padding: 10px
-  border-top: #222 dotted 1px
+  padding: 8px 10px
+  border-top: $gray dotted 1px
 
-  font-size: 0.8em
+  font-size: 0.7em
 
-  .copyright
+  .copyright, .repository
     display: inline-block
+
+  .repository
+    float: right
 
 
 .site-header
   width: 100%
   height: $header-height
-  padding: 8px 10px
   z-index: $medium-priority
   border-bottom: 1px #222 dotted
+
+  .site-navigation
+    height: 100%
+    text-transform: uppercase
+    ul
+      height: 100%
+      li
+        padding: 5px 10px
+        height: 100%
+        display: inline-block
+
+        &:hover
+          +transition-property(background)
+          +transition-duration($medium)
+          background-color: $black
+          color: $white
 
 // Correct highlighted text selection
 ::selection

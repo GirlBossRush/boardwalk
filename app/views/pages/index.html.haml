@@ -1,3 +1,32 @@
 %section.featurette
-  .hero-logo ❖
-  .hero-text Boardwalk
+  .hero.logo ❖
+  .hero.text Boardwalk
+  %p.sell Boardwalk is for special individuals.
+
+%section.registration
+  %form#new-user.slim
+    %h5 Who are you?
+    %label{for: 'user_username'} Username
+    %input#user_username{type: 'text',
+                         name: 'username',
+                         placeholder: 'Username',
+                         required: true,
+                         autofocus: true}
+
+    %label{for: 'user_email'} Username
+    %input#user_email{type: 'email', name: 'email', placeholder: 'Email', required: true}
+
+    %label{for: 'user_password'} Password
+    %input#user_password{type: 'password',
+                         name: 'password',
+                         placeholder: 'Password',
+                         required: true}
+
+    %label{for: 'user_password_confirmation'} Confirmation
+    %input#user_password{type: 'password',
+                         name: 'password_confirmation',
+                         placeholder: 'Confirmation',
+                         required: true}
+
+    %label{for: 'user_submit'} Submit
+    %input#user_submit{type: 'submit', value: 'Register'}
