@@ -109,6 +109,35 @@ strong
           background-color: $black
           color: $white
 
+
+.logo
+  display: inline-block
+  padding: 8px 6px
+
+  &:hover
+    .inner
+      +animation-name(tiltRotate)
+      +animation-duration(5s)
+      +animation-fill-mode(forwards)
+      +animation-timing-function(linear)
+      +animation-iteration-count(infinite)
+
+  .inner
+    +transform(rotate(45deg))
+
+    height: 106px
+    width: 106px
+    border-radius: 53px
+    padding: 22px
+
+    .box
+      margin: 2px 1px
+      background: #000
+      width: 25px
+      height: 25px
+      display: inline-block
+
+
 // Correct highlighted text selection
 ::selection
   text-shadow: none

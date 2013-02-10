@@ -35,7 +35,7 @@ GEM
       jquery-rails
       rails (>= 3.1)
     bcrypt-ruby (3.0.1)
-    bourbon (3.0.1)
+    bourbon (3.1.0)
       sass (>= 3.2.0)
       thor
     bson (1.8.2)
@@ -150,7 +150,7 @@ PLATFORMS
 DEPENDENCIES
   backbone-on-rails
   bcrypt-ruby (~> 3.0.0)
-  bourbon
+  bourbon (~> 3.1.0)
   bson_ext
   coffee-rails (~> 3.2.1)
   haml
