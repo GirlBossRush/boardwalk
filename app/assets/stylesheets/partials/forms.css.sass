@@ -1,3 +1,10 @@
+.input-validation
+  display: none
+  float: right
+  height: 0
+  position: relative
+  bottom: 20px
+
 .slim
   font-size: 1.2em
   width: 500px
@@ -26,6 +33,15 @@
         outline: 0
         margin-bottom: -1px
         border-bottom: 1px dotted $gray
+
+        & ~ .input-validation
+          display: block
+
+        &:invalid ~ .input-validation:after
+          content: "\2A2F" // X
+
+        &:valid ~ .input-validation:after
+          content: "\2713" // Checkmark
 
     &[type="submit"]
       background-color: $black
