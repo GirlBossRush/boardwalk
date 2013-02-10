@@ -2,13 +2,12 @@
 %html
   %head
     %title Boardwalk
-    = stylesheet_link_tag "application", media: "all"
-    = javascript_include_tag "application"
-    %meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
-    %meta(charset='utf-8')
-
+    %meta{name: "viewport",
+          content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"}
+    %meta{charset: 'utf-8'}
     = csrf_meta_tags
 
+    = stylesheet_link_tag "application", media: "all"
     = favicon_link_tag(image_path('favicon.png'))
   %body
     .container
@@ -17,3 +16,4 @@
         .content
           = yield
     = render partial: 'shared/footer'
+    = javascript_include_tag "application"
