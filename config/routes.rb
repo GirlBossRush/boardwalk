@@ -1,5 +1,4 @@
 Boardwalk::Application.routes.draw do
-  resources :users
 
   resources :sessions
   get 'signup', to: 'users#new', as: 'signup'
@@ -8,6 +7,7 @@ Boardwalk::Application.routes.draw do
 
   scope 'api' do
     resources :boards
+    resources :users
   end
 
   root to: 'pages#index'

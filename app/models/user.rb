@@ -11,7 +11,7 @@ class User
   validates(:username,
             length: { maximum: 64 },
             presence: true,
-            format: /^[a-zA-Z0-9-_]+$/, # Alphanumeric, underscores and dashes
+            format: /^[a-zA-Z0-9\-_]+$/, # Alphanumeric, underscores and dashes
             uniqueness: { case_sensitive: false })
 
   validates(:password,
