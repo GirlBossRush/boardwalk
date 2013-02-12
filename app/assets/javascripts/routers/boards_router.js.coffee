@@ -1,15 +1,19 @@
 class Boardwalk.Routers.Boards extends Backbone.Router
   routes:
-    'boards/': 'index'
+    'boards': 'index'
     'boards/:id': 'show'
 
   initialize: ->
     @collection = new Boardwalk.Collections.Boards()
-    @collection.reset($('#data-store').data 'boards')
 
   index: ->
+    @collection.fetch()
     view = new Boardwalk.Views.BoardsIndex(collection: @collection)
-    $('#data-store').html(view.render().el)
+    Boardwalk.content.html(view.render().el)
 
   show: (id) ->
-    alert "Board #{id}"
+    board = new Boardwalk.Models.Board id: id
+
+    board.fetch
+      success: (response, object) ->
+        console.log object
