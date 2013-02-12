@@ -1,12 +1,11 @@
-class Boardwalk.Views.UsersIndex extends Backbone.View
+class Boardwalk.Views.UsersNew extends Backbone.View
 
-  template: JST['users/index']
+  template: JST['users/new']
 
   events:
     'submit #new-user': 'createUser'
 
   render: ->
-    console.log "render"
     $(@el).html(@template())
     this
 

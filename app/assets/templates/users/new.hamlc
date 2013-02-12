@@ -1,0 +1,54 @@
+%section.featurette
+  .logo
+    .inner
+      .purple.box
+      .turquoise.box
+      .forest-green.box
+      .burnt-orange.box
+  .hero.text Boardwalk
+  %p.sell Be somebody.
+
+%section.registration
+  %form#new-user.slim
+    %h5 Who are you?
+
+    .field
+      %label{for: 'user_username'} Username
+      %input#user_username{type: 'text',
+                           name: 'user[username]',
+                           placeholder: 'Username',
+                           maxlength: 64,
+                           required: true,
+                           autofocus: true,
+                           pattern: "^[a-zA-Z0-9\-_]+$",
+                           title: "Alphanumeric, underscores and dashes."}
+      .input-validation
+
+    .field
+      %label{for: 'user_email'} Username
+      %input#user_email{type: 'email',
+                        name: 'user[email]',
+                        placeholder: 'Email',
+                        required: true,
+                        pattern: ".+@.+\..+"}
+      .input-validation
+
+    .field
+      %label{for: 'user_password'} Password
+      %input#user_password{type: 'password',
+                           name: 'user[password]',
+                           placeholder: 'Password',
+                           required: true}
+      .input-validation
+
+    .field
+      %label{for: 'user_password_confirmation'} Confirmation
+      %input#user_password_confirmation{type: 'password',
+                                        name: 'user[password_confirmation]',
+                                        placeholder: 'Confirmation',
+                                        required: true}
+      .input-validation
+
+
+    %label{for: 'user_submit'} Submit
+    %input#user_submit{type: 'submit', value: 'Register'}

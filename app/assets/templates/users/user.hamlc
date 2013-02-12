@@ -1,1 +1,7 @@
-new user
+%td = @user.get('_id')
+%td = @user.get('username')
+%td = @user.get('email')
+%td
+  %time{datetime: @user.get('created_at')} = @user.get('created_at')
+%td
+  %time{datetime: @user.get('updated_at')} = @user.get('updated_at')
