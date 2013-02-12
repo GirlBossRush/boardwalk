@@ -20,4 +20,8 @@ class User
   validates(:email,
             uniqueness: { case_sensitive: false },
             format: /.+@.+\..+/i) # Just an '@' and a '.'
+
+  def as_json(options = {})
+    super(options.merge(except: [:password_digest]))
+  end
 end
