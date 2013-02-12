@@ -1,7 +1,7 @@
-class Boardwalk.Views.UsersNew extends Backbone.View
+class Boardwalk.Views.UsersShow extends Backbone.View
 
   template: JST['users/show']
 
   render: ->
-    $(@el).html(@template())
+    $(@el).html(@template(user: @model))
     this

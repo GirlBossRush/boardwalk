@@ -10,19 +10,22 @@ class Boardwalk.Routers.Users extends Backbone.Router
   index: ->
     @collection.fetch()
     view = new Boardwalk.Views.UsersIndex(collection: @collection)
+    view.setTitle "Users"
+
     Boardwalk.content.html(view.render().el)
 
   new: ->
     view = new Boardwalk.Views.UsersNew(collection: @collection)
     Boardwalk.content.html(view.render().el)
 
-  show: ->
-    board = new Boardwalk.Models.User id: id
+  show: (id) ->
+    user = new Boardwalk.Models.User id: id
 
-    board.fetch
-      success: (response, object) ->
-        console.log object
-        view = new Boardwalk.Views.UsersShow(object)
+    user.fetch
+      success: ->
+        view = new Boardwalk.Views.UsersShow(model: user)
+        view.setTitle(_.string.titleize(user.get('username')))
+
         Boardwalk.content.html(view.render().el)
 
 
