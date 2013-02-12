@@ -1,6 +1,8 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
   include ActiveModel::SecurePassword
+
   has_secure_password
   attr_accessible :username, :email, :password, :password_confirmation
 
