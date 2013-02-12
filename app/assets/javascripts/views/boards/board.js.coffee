@@ -3,11 +3,11 @@ class Boardwalk.Views.Board extends Backbone.View
   tagName: 'li'
 
   events:
-    'click': 'showEntry'
+    'click': 'showBoard'
 
   render: ->
     $(@el).html(@template(board: @model))
     this
 
-  showEntry: ->
+  showBoard: ->
     Backbone.history.navigate("boards/#{@model.get('_id')}", true)
