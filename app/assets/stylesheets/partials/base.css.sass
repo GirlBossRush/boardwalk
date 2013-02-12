@@ -93,6 +93,7 @@ strong
   z-index: $medium-priority
 
   .site-navigation
+    display: inline-block
     height: 100%
     text-transform: uppercase
     ul
@@ -114,19 +115,42 @@ strong
           font-weight: inherit
           text-decoration: inherit
 
+  .message-center
+    font-family: monospace
 
+    height: 100%
+    display: none
+    text-align: right
+    float: right
+
+    .accent
+      +animation-name(blink)
+      +animation-duration(1s)
+      +animation-timing-function(linear)
+      +animation-iteration-count(infinite)
+      display: inline-block
+
+    .message
+      display: inline-block
+      padding: 6px 10px
+
+      color: $white
+      background-color: $black
 
 .logo
   display: inline-block
   padding: 8px 6px
 
-  &:hover
+  &:hover, &.rotating
     .inner
       +animation-name(tiltRotate)
       +animation-duration(5s)
       +animation-fill-mode(forwards)
       +animation-timing-function(linear)
       +animation-iteration-count(infinite)
+
+  &.small
+    zoom: 0.2
 
   .inner
     +transform(rotate(45deg))
@@ -141,6 +165,7 @@ strong
 
       width: 25px
       height: 25px
+
 
 
 // Correct highlighted text selection
