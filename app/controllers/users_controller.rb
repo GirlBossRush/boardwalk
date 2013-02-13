@@ -20,4 +20,12 @@ class UsersController < ApplicationController
   def destroy
     respond_with User.destroy(params[:id])
   end
+
+  def check
+    if User.where(username: params[:username]).any?
+      respond_with(available: false, message: "Username is taken.")
+    else
+      respond_with(available: true, message: "Username is available.")
+    end
+  end
 end

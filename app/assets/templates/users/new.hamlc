@@ -46,6 +46,7 @@
       %input#user_password_confirmation{type: 'password',
                                         name: 'user[password_confirmation]',
                                         placeholder: 'Confirmation',
+                                        matches: 'user_password',
                                         required: true}
       .input-validation
 

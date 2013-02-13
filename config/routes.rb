@@ -8,6 +8,7 @@ Boardwalk::Application.routes.draw do
   scope 'api' do
     resources :boards
     resources :users
+    get 'check/:username', to: 'users#check', as: 'check'
   end
 
   root to: 'pages#index'

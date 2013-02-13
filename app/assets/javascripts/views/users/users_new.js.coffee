@@ -4,6 +4,8 @@ class Boardwalk.Views.UsersNew extends Backbone.View
 
   events:
     'submit #new-user': 'createUser'
+    'keyup #user_username': 'checkUsername'
+    'keyup #user_password_confirmation': 'checkPassword'
 
   render: ->
     $(@el).html(@template())
@@ -24,3 +26,20 @@ class Boardwalk.Views.UsersNew extends Backbone.View
       error: ->
         $form.find('input:first').focus()
 
+  checkUsername: (event) ->
+    $input = $(event.target)
+    username = $input.val()
+    $.getJSON "api/check/#{username}", {}, (response) ->
+      if response.available == false
+        $input[0].setCustomValidity(response.message)
+      else
+        $input[0].setCustomValidity(null)
+
+  checkPassword: (event) ->
+    $input = $(event.target)
+    $inputMatch = $("##{$input.attr('matches')}")
+
+    if $input.val() != $inputMatch.val()
+      $input[0].setCustomValidity("Passwords do not match.")
+    else
+      $input[0].setCustomValidity(null)
