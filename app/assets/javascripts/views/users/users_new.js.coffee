@@ -13,14 +13,14 @@ class Boardwalk.Views.UsersNew extends Backbone.View
     event.preventDefault()
     $form = $('#new-user')
     attributes = $form.serializeObject()
-    @collection.create attributes,
-      wait: true
-      success: ->
-        $form[0].reset()
-      error: @handleError
 
-  handleError: (user, response) ->
-    if response.status == 422
-      errors = $.parseJSON(response.responseText).errors
-      for attribute, messages of errors
-        alert "#{attribute} #{message}" for message in messages
+    @user = new Boardwalk.Models.User(attributes)
+
+    @user.save null,
+      wait: true
+      success: (model) ->
+        $form[0].reset()
+
+      error: ->
+        $form.find('input:first').focus()
+
