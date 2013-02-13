@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_with User.update(params[:id], params[:user])
+    respond_with User.find(params[:id]).update_attributes(params[:user])
   end
 
   def destroy
