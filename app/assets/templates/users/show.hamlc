@@ -22,3 +22,6 @@
     %p Regards,
 
     %p Eric Wright
+
+%figure.portrait.widget
+  %img{width: '500px', src: "http://res.cloudinary.com/hke8udxd5/image/upload/a_exif/v1356053258/gyueubhxgk68dkn2wisl.jpg"}
