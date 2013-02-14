@@ -1,0 +1,51 @@
+.blog-post
+  width: 500px
+
+  margin: 0 auto
+  padding: 15px 14px
+
+  border: 1px $black solid
+  border-radius: 5px
+
+  word-wrap: break-word
+  line-height: 20px
+
+  background: transparentize(#ddd, 0.9)
+
+  .blog-header
+    margin-bottom: 15px
+
+    .timestamp
+      margin: 5px 0
+      font-style: italic
+
+  .body
+    h1
+      font-size: 1.3em
+    h2
+      font-size: 1.25em
+    h3
+      font-size: 1.15em
+    h4, h5, h6
+      font-size: 1em
+    em
+      font-style: italic
+    code
+      font-family: monospace
+      white-space: pre
+    blockquote
+      border-left: 2px solid $black
+      padding: 4px
+      color: $black
+
+    p
+      margin: 10px 0
+
+      &:last-child
+        margin-bottom: 0
+      &:first-child
+        margin-top: 0
+
+.ui-draggable
+  &.ui-draggable-dragging
+    cursor: move
