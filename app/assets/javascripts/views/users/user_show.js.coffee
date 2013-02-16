@@ -11,4 +11,8 @@ class Boardwalk.Views.UsersShow extends Backbone.View
 
   editWidgets: (event) ->
     event.preventDefault()
-    $(".widget").draggable({ grid: [ 20, 20 ], snap: true, snapMode: "outer", stack: ".widget" })
+    $(".widget").draggable
+      grid: [20, 20]
+      snap: true
+      snapMode: "outer"
+      stack: ".widget"
