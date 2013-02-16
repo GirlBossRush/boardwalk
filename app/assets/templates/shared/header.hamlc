@@ -2,6 +2,8 @@
   %nav.site-navigation
     %ul
       %li
+        %a#home(href="#") Home
+      %li
         %a(href="#") Sign In
       %li
         %a(href="#") HELP

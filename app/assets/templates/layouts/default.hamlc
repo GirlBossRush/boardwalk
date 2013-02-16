@@ -1,0 +1,4 @@
+!= JST['shared/header']()
+#content
+  "Loading..."
+!= JST['shared/footer']()

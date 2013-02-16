@@ -28,7 +28,10 @@ html, body
   background-color: $background-color
   // background: $site-background
   // background-size: $site-background-size
-  height: 100%
+
+body
+  position: relative
+  top: $header-height
 
 a
   color: $gray
@@ -61,20 +64,22 @@ strong
   visibility: hidden
 
 .container
-  min-height: 100%
-
-.wrapper
+  height: 100%
   padding-bottom: $footer-height
-  overflow: auto
+
 
 #content
   margin-top: $header-height
   padding: 20px 15px
 
 .site-footer
-  clear: both
+  position: fixed
+  bottom: 0
+
+  background-color: $white
+
+  width: 100%
   height: $footer-height
-  margin-top: -$footer-height
   padding: 8px 10px
   border-top: $gray dotted 1px
 
@@ -88,6 +93,9 @@ strong
 
 
 .site-header
+  position: fixed
+  top: 0
+
   width: 100%
   height: $header-height
   z-index: $medium-priority

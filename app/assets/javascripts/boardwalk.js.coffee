@@ -7,6 +7,9 @@ window.Boardwalk =
     new Boardwalk.Routers.Boards
     new Boardwalk.Routers.Users
     Backbone.history.start(pushState: true)
+
+Boardwalk.content = (data) ->
+  $('#content').html(data)
+
 $(document).ready ->
-  Boardwalk.content = $('#content')
   Boardwalk.init()

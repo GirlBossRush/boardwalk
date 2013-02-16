@@ -1,4 +1,4 @@
 %footer.site-footer
-  .copyright Copyright #{Time.now.year}
+  .copyright Copyright #{new Date().getFullYear()}
   .repository
     %a(href="http://github.com/ericwright90/boardwalk" target="_blank") Open source
