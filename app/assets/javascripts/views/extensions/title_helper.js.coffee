@@ -1,4 +1,4 @@
-_.extend Backbone.View.prototype,
+_.extend Boardwalk,
   setTitle: (prefix) ->
     if prefix == undefined
       title = "Boardwalk.io"

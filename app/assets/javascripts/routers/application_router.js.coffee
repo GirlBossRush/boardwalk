@@ -9,6 +9,6 @@ class Boardwalk.Routers.Application extends Backbone.Router
 
   notFound: (path) ->
     view = new Boardwalk.Views.NotFound()
-    view.setTitle "Page not found"
+    Boardwalk.setTitle "Page not found"
 
     Boardwalk.content(view.render(path: path).el)
