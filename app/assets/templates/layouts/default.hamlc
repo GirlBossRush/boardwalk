@@ -1,4 +1,4 @@
 != JST['shared/header']()
 #content
-  "Loading..."
+  / Content has not been set.
 != JST['shared/footer']()
