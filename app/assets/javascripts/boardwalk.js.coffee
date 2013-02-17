@@ -4,6 +4,7 @@ window.Boardwalk =
   Views: {}
   Routers: {}
   init: ->
+    new Boardwalk.Routers.Application
     new Boardwalk.Routers.Boards
     new Boardwalk.Routers.Users
     Backbone.history.start(pushState: true)

@@ -4,11 +4,13 @@ class Boardwalk.Routers.Users extends Backbone.Router
     'users': 'index'
     'users/:id': 'show'
 
+  before:
+    '': ->
+      layout = new Boardwalk.Views.DefaultLayout()
+      $('body').prepend(layout.render().el)
+
   initialize: ->
     @collection = new Boardwalk.Collections.Users()
-
-    layout = new Boardwalk.Views.DefaultLayout()
-    $('body').prepend(layout.render().el)
 
   index: ->
     @collection.fetch()
@@ -29,5 +31,3 @@ class Boardwalk.Routers.Users extends Backbone.Router
         view = new Boardwalk.Views.UsersShow(model: user)
         view.setTitle(_.string.titleize(user.get('username')))
         Boardwalk.content(view.render().el)
-
-

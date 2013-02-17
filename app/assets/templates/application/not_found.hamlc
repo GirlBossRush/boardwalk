@@ -1,0 +1,9 @@
+%section.featurette
+  .logo
+    .inner
+      .purple.box
+      .turquoise.box
+      .forest-green.box
+      .burnt-orange.box
+  .hero.text Oh shit
+  %h2 "#{@path}" does not exist.
