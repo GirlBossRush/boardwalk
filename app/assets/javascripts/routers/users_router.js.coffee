@@ -4,15 +4,14 @@ class Boardwalk.Routers.Users extends Backbone.Router
     'users': 'index'
     'users/:id': 'show'
 
-  before:
-    '': ->
-      layout = new Boardwalk.Views.DefaultLayout()
-      $('body').prepend(layout.render().el)
-
   initialize: ->
     @collection = new Boardwalk.Collections.Users()
 
+
   index: ->
+    layout = new Boardwalk.Views.DefaultLayout()
+    $('#container').replaceWith(layout.render().el)
+
     @collection.fetch()
     view = new Boardwalk.Views.UsersIndex(collection: @collection)
     Boardwalk.setTitle "User index"
@@ -20,14 +19,21 @@ class Boardwalk.Routers.Users extends Backbone.Router
     Boardwalk.content(view.render().el)
 
   new: ->
+    layout = new Boardwalk.Views.DefaultLayout()
+    $('#container').replaceWith(layout.render().el)
+
     view = new Boardwalk.Views.UsersNew(collection: @collection)
     Boardwalk.content(view.render().el)
 
   show: (id) ->
+    layout = new Boardwalk.Views.BoardLayout()
+    $('#container').replaceWith(layout.render().el)
+
     user = new Boardwalk.Models.User id: id
 
     user.fetch
-      success: ->
+      success: (f) ->
+        console.log f
         view = new Boardwalk.Views.UsersShow(model: user)
         Boardwalk.setTitle(_.string.titleize(user.get('username')))
         Boardwalk.content(view.render().el)

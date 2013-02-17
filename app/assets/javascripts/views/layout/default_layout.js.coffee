@@ -1,6 +1,5 @@
 class Boardwalk.Views.DefaultLayout extends Backbone.View
-  attributes: ->
-    class: 'container'
+  id: 'container'
 
   events:
     'click #home': "root_url"
