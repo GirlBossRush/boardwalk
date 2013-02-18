@@ -2,12 +2,10 @@ class Boardwalk.Routers.Application extends Backbone.Router
   routes:
     '*undefined': 'notFound'
 
-  before:
-    '': ->
-      layout = new Boardwalk.Views.DefaultLayout()
-      $('body').prepend(layout.render().el)
-
   notFound: (path) ->
+    layout = new Boardwalk.Views.DefaultLayout()
+    $('#container').replaceWith(layout.render().el)
+
     view = new Boardwalk.Views.NotFound()
     Boardwalk.setTitle "Page not found"
 

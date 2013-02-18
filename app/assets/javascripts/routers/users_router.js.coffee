@@ -24,14 +24,13 @@ class Boardwalk.Routers.Users extends Backbone.Router
     Boardwalk.content(view.render().el)
 
   show: (id) ->
-    layout = new Boardwalk.Views.BoardLayout()
-    $('#container').replaceWith(layout.render().el)
-
     user = new Boardwalk.Models.User id: id
 
     user.fetch
-      success: (f) ->
-        console.log f
+      success: ->
+        layout = new Boardwalk.Views.BoardLayout(collection: @collection)
+        $('#container').replaceWith(layout.render().el)
+
         view = new Boardwalk.Views.UsersShow(model: user)
         Boardwalk.setTitle(_.string.titleize(user.get('username')))
         Boardwalk.content(view.render().el)
