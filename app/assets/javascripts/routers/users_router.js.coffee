@@ -4,19 +4,17 @@ class Boardwalk.Routers.Users extends Backbone.Router
     'users': 'index'
     'users/:id': 'show'
 
-  initialize: ->
-    @collection = new Boardwalk.Collections.Users()
-
-
   index: ->
+    collection = new Boardwalk.Collections.Users()
     layout = new Boardwalk.Views.DefaultLayout()
     $('#container').replaceWith(layout.render().el)
 
-    @collection.fetch()
-    view = new Boardwalk.Views.UsersIndex(collection: @collection)
-    Boardwalk.setTitle "User index"
+    collection.fetch
+      success: ->
+        view = new Boardwalk.Views.UsersIndex(collection: collection)
+        Boardwalk.setTitle "User index"
 
-    Boardwalk.content(view.render().el)
+        Boardwalk.content(view.render().el)
 
   new: ->
     layout = new Boardwalk.Views.DefaultLayout()
