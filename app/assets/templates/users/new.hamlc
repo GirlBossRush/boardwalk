@@ -6,11 +6,11 @@
       .forest-green.box
       .burnt-orange.box
   .hero.text Boardwalk
-  %p.sell Be somebody.
+  .sell Be somebody.
 
 %section.registration
   %form#new-user.slim
-    %h5 Who are you?
+    %h3.headline Who are you?
 
     .field
       %label{for: 'user_username'} Username

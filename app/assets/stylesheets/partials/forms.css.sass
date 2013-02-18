@@ -14,6 +14,10 @@ form.slim
   label
     display: none
 
+  .headline
+    font-weight: normal
+    text-align: center
+
   input
     width: 100%
     font-family: $basic-fonts
@@ -43,7 +47,7 @@ form.slim
 
         &:invalid ~ .input-validation:after
           color: $red
-          content: "\2A2F" // X
+          content: "\2717" // Ballot 'x'
 
         &:valid ~ .input-validation:after
           color: $green

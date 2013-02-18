@@ -30,6 +30,7 @@ html, body
   // background-size: $site-background-size
 
 body
+  line-height: 1
   position: relative
   top: $header-height
 
@@ -106,6 +107,9 @@ strong
     text-transform: uppercase
     ul
       height: 100%
+      margin: 0
+      padding: 0
+
       li
         height: 100%
         display: inline-block
@@ -183,3 +187,24 @@ strong
   text-shadow: none
   color: $white
   background: $black
+
+
+::-webkit-scrollbar
+  height: 4px
+  width: 4px
+
+
+::-webkit-scrollbar-track
+  background-color: $off-white
+
+::-webkit-scrollbar-track-piece
+  background-color: $off-white
+  &:hover
+    background-color: darken($off-white, 20%)
+
+::-webkit-scrollbar-thumb
+  background-color: #666
+  border-radius: 1px
+
+::-webkit-scrollbar-corner
+  background-color: $off-white
