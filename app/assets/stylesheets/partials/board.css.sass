@@ -1,0 +1,14 @@
+#content.board
+  border: 1px dashed $black
+  width: 3840px
+  height: 2160px
+
+  +transition-property(all)
+  +transition-duration($fast)
+
+  +transform(scale(1.0))
+  +transform-origin(0 0)
+
+  &.zoomed-out
+    +transform(scale(0.5))
+    +transform-origin(0 0)
