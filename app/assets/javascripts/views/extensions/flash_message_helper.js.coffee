@@ -9,9 +9,9 @@ _.extend Boardwalk,
       output = "<li>#{input}</li>"
 
     $flash = $('#flash')
-    $message = $flash.children('.message')
+    $messages = $flash.children('.messages')
 
-    $message.html(output)
+    $messages.html(output)
 
     $flash.stop(true, true).fadeIn () ->
       $(this).delay(8000).fadeOut()

@@ -9,4 +9,4 @@
         %a#help(href="#help") Help
   %aside#flash.message-center
     .accent ❖
-    %ul.message
+    %ul.messages
