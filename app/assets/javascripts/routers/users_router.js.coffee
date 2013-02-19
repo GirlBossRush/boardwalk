@@ -20,7 +20,7 @@ class Boardwalk.Routers.Users extends Backbone.Router
     layout = new Boardwalk.Views.DefaultLayout()
     $('#container').replaceWith(layout.render().el)
 
-    view = new Boardwalk.Views.UsersNew(collection: @collection)
+    view = new Boardwalk.Views.UsersNew()
     Boardwalk.content(view.render().el)
 
   show: (id) ->
