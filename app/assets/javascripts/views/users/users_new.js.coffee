@@ -22,6 +22,9 @@ class Boardwalk.Views.UsersNew extends Backbone.View
       wait: true
       success: (model) ->
         $form[0].reset()
+        Boardwalk.flashMessage(
+          ["Your registration was successful but Boardwalk is still a work in progress.",
+           "More features coming soon."])
 
       error: ->
         $form.find('input:first').focus()
