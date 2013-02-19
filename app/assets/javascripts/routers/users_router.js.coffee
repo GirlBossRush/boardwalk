@@ -12,8 +12,8 @@ class Boardwalk.Routers.Users extends Backbone.Router
     collection.fetch
       success: ->
         view = new Boardwalk.Views.UsersIndex(collection: collection)
-        Boardwalk.setTitle "Users"
 
+        Boardwalk.setTitle "Users"
         Boardwalk.content(view.render().el)
 
   new: ->
@@ -21,6 +21,8 @@ class Boardwalk.Routers.Users extends Backbone.Router
     $('#container').replaceWith(layout.render().el)
 
     view = new Boardwalk.Views.UsersNew()
+
+    Boardwalk.setTitle("Be somebody")
     Boardwalk.content(view.render().el)
 
   show: (id) ->
