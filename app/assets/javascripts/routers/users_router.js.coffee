@@ -12,7 +12,7 @@ class Boardwalk.Routers.Users extends Backbone.Router
     collection.fetch
       success: ->
         view = new Boardwalk.Views.UsersIndex(collection: collection)
-        Boardwalk.setTitle "User index"
+        Boardwalk.setTitle "Users"
 
         Boardwalk.content(view.render().el)
 
