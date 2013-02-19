@@ -18,7 +18,8 @@
                         name: 'user[email]',
                         placeholder: 'Email',
                         required: true,
-                        pattern: ".+@.+\..+"}
+                        pattern: ".+@.+\..+",
+                        autofocus: true}
       .input-validation
 
     .field
