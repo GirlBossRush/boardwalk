@@ -6,9 +6,11 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      respond_with({ authenticated: true },
-                   status: 201,
-                   location: nil)
+
+      respond_with({ authenticated: true,
+                     user: user },
+                     status: 201,
+                     location: nil)
     else
       respond_with({ authenticated: false },
                      status: :unprocessable_entity,
@@ -19,7 +21,7 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:user_id)
     respond_with({ authenticated: false },
-                 status: 200,
-                 location: nil)
+                   status: 200,
+                   location: nil)
   end
 end

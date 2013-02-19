@@ -15,12 +15,14 @@ class Boardwalk.Views.SessionsNew extends Backbone.View
     $form = $(e.target)
     attributes = $form.serializeObject()
 
-    @session = new Boardwalk.Models.Session(attributes)
+    session = new Boardwalk.Models.Session(attributes)
 
-    @session.save null,
+    session.save null,
       wait: true
-      success: (model) ->
-        $form[0].reset()
+      success: ->
+        userData = session.get('user')
+        Backbone.history.navigate("users/#{userData._id}", true)
+
 
       error: ->
         $form.find('input:first').focus()
