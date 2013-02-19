@@ -13,8 +13,8 @@
     %h3.headline Who are you?
 
     .field
-      %label{for: 'user_username'} Username
-      %input#user_username{type: 'text',
+      %label{for: 'user-username'} Username
+      %input#user-username{type: 'text',
                            name: 'user[username]',
                            placeholder: 'Username',
                            maxlength: 64,
@@ -25,8 +25,8 @@
       .input-validation
 
     .field
-      %label{for: 'user_email'} Username
-      %input#user_email{type: 'email',
+      %label{for: 'user-email'} Username
+      %input#user-email{type: 'email',
                         name: 'user[email]',
                         placeholder: 'Email',
                         required: true,
@@ -34,15 +34,15 @@
       .input-validation
 
     .field
-      %label{for: 'user_password'} Password
-      %input#user_password{type: 'password',
+      %label{for: 'user-password'} Password
+      %input#user-password{type: 'password',
                            name: 'user[password]',
                            placeholder: 'Password',
                            required: true}
       .input-validation
 
     .field
-      %label{for: 'user_password_confirmation'} Confirmation
+      %label{for: 'user-password-confirmation'} Confirmation
       %input#user_password_confirmation{type: 'password',
                                         name: 'user[password_confirmation]',
                                         placeholder: 'Confirmation',
@@ -51,5 +51,5 @@
       .input-validation
 
 
-    %label{for: 'user_submit'} Submit
-    %input#user_submit{type: 'submit', value: 'Register'}
+    %label{for: 'user-submit'} Submit
+    %input#user-submit{type: 'submit', value: 'Register'}

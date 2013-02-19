@@ -20,6 +20,6 @@ class Boardwalk.Views.UsersIndex extends Backbone.View
 
   showUser: (e) ->
     e.preventDefault()
-    $el = $(e.toElement)
+    $el = $(e.target)
     id = $el.data('id')
     Backbone.history.navigate("users/#{id}", true)

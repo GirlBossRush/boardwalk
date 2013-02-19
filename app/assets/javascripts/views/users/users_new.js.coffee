@@ -4,16 +4,16 @@ class Boardwalk.Views.UsersNew extends Backbone.View
 
   events:
     'submit #new-user': 'createUser'
-    'keyup #user_username': 'checkUsername'
-    'keyup #user_password_confirmation': 'checkPassword'
+    'keyup #user-username': 'checkUsername'
+    'keyup #user-password-confirmation': 'checkPassword'
 
   render: ->
     $(@el).html(@template())
     this
 
-  createUser: (event) ->
-    event.preventDefault()
-    $form = $('#new-user')
+  createUser: (e) ->
+    e.preventDefault()
+    $form = $(e.target)
     attributes = $form.serializeObject()
 
     @user = new Boardwalk.Models.User(attributes)
@@ -26,8 +26,8 @@ class Boardwalk.Views.UsersNew extends Backbone.View
       error: ->
         $form.find('input:first').focus()
 
-  checkUsername: (event) ->
-    $input = $(event.target)
+  checkUsername: (e) ->
+    $input = $(e.target)
     username = $input.val()
     $.getJSON "api/check/#{username}", {}, (response) ->
       if response.available == false
@@ -35,8 +35,8 @@ class Boardwalk.Views.UsersNew extends Backbone.View
       else
         $input[0].setCustomValidity(null)
 
-  checkPassword: (event) ->
-    $input = $(event.target)
+  checkPassword: (e) ->
+    $input = $(e.target)
     $inputMatch = $("##{$input.attr('matches')}")
 
     if $input.val() != $inputMatch.val()
