@@ -2,11 +2,11 @@
   %nav.site-navigation
     %ul
       %li
-        %a#home(href="#") Home
+        %a#home(href="#home") Home
       %li
-        %a(href="#") Sign In
+        %a#login(href="#login") Log in
       %li
-        %a(href="#") HELP
+        %a#help(href="#help") Help
   %aside#flash.message-center
     .accent ❖
     %ul.message

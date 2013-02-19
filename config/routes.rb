@@ -1,13 +1,8 @@
 Boardwalk::Application.routes.draw do
-
-  resources :sessions
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
-
   scope 'api' do
     resources :boards
     resources :users
+    resources :sessions
     get 'check/:username', to: 'users#check', as: 'check'
   end
 

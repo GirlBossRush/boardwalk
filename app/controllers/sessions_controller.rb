@@ -1,20 +1,25 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  respond_to :json
 
   def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
+    user = User.find_by(email:params[:user][:email])
+
+    if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect_to root_url, notice: "Logged in!"
+      respond_with({ authenticated: true },
+                   status: 201,
+                   location: nil)
     else
-      flash.now.alert = "Email or password is invalid"
-      render "new"
+      respond_with({ authenticated: false },
+                     status: :unprocessable_entity,
+                     location: nil )
     end
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to root_url, notice: "Logged out!"
+    session.delete(:user_id)
+    respond_with({ authenticated: false },
+                 status: 200,
+                 location: nil)
   end
 end

@@ -1,0 +1,33 @@
+%section.featurette
+  .logo
+    .inner
+      .purple.box
+      .turquoise.box
+      .forest-green.box
+      .burnt-orange.box
+  .hero.text Boardwalk
+  .sell Be somebody.
+
+%section.registration
+  %form#new-session.slim
+    %h3.headline Welcome back.
+
+    .field
+      %label{for: 'user-email'} Username
+      %input#user-email{type: 'email',
+                        name: 'user[email]',
+                        placeholder: 'Email',
+                        required: true,
+                        pattern: ".+@.+\..+"}
+      .input-validation
+
+    .field
+      %label{for: 'user-password'} Password
+      %input#user-password{type: 'password',
+                           name: 'user[password]',
+                           placeholder: 'Password',
+                           required: true}
+      .input-validation
+
+    %label{for: 'user-submit'} Login
+    %input#user-submit{type: 'submit', value: 'Log in'}
