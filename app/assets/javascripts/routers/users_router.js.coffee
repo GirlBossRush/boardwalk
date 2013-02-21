@@ -36,3 +36,7 @@ class Boardwalk.Routers.Users extends Backbone.Router
         view = new Boardwalk.Views.UsersShow(model: user)
         Boardwalk.setTitle(_.string.titleize(user.get('username')))
         Boardwalk.content(view.render().el)
+
+        if Modernizr.touch == false
+          debiki.Utterscroll.enable
+            scrollstoppers: '.ui-resizable-handle'
