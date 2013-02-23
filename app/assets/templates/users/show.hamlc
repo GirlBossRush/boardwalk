@@ -1,24 +1,33 @@
-%article.widget.blog-post
-  %header.blog-header
-    %h2 A letter to my city council
-    %time.timestamp 2 days ago
+#north.neighbor
+  %a Norbert North
+#east.neighbor
+  %a Eve East
+#south.neighbor
+  %a Sally South
+#west.neighbor
+  %a Walter West
+.inner
+  %article.widget.blog-post
+    %header.blog-header
+      %h2 A letter to my city council
+      %time.timestamp 2 days ago
 
-  .body
-    %p I've lived in Michigan my entire life and I'm sick and tired of the weather so I decided to do something about it.
+    .body
+      %p I've lived in Michigan my entire life and I'm sick and tired of the weather so I decided to do something about it.
 
-    %p To whom it may concern,
+      %p To whom it may concern,
 
-    %p My name is Eric Wright and I am not happy with the amount of snow fall each year. I enjoy the holiday season as much as the next guy but the weather is just ridiculous. I can't imagine how much money is put into the winter season preparing and dropping the snow fall over the state. It seems that your administration can't even prepare the right amount and is forced to send out salt trucks to clean up the excess snow. I don't think our tax dollars should be going toward such frivolous purchases when we can't even repave Evergreen street.
+      %p My name is Eric Wright and I am not happy with the amount of snow fall each year. I enjoy the holiday season as much as the next guy but the weather is just ridiculous. I can't imagine how much money is put into the winter season preparing and dropping the snow fall over the state. It seems that your administration can't even prepare the right amount and is forced to send out salt trucks to clean up the excess snow. I don't think our tax dollars should be going toward such frivolous purchases when we can't even repave Evergreen street.
 
-    %p I've been a big fan of your weather policy in the past and even celebrated your Spring budget. I can't help but wonder if all this Winter is the result of corporate lobbying. I'm sure the snow blower industry is very happy with your “policies.” The salt companies are then paid to “clean up” the excess snow fall that YOUR administration ordered. I believe in my government and I pray that my city council hasn't lost its integrity.
+      %p I've been a big fan of your weather policy in the past and even celebrated your Spring budget. I can't help but wonder if all this Winter is the result of corporate lobbying. I'm sure the snow blower industry is very happy with your “policies.” The salt companies are then paid to “clean up” the excess snow fall that YOUR administration ordered. I believe in my government and I pray that my city council hasn't lost its integrity.
 
-    %p I urge the city of Southfield to reconsider its weather policy and consider a lighter snow fall. I would appreciate Spring all year round but I understand that the heating budget is tight with our economy in a recession. I can't say I know the specifics but I visited a relative of mine in Florida and they've managed to feature Summer each month without raising taxes significantly. A citizen's choice initiative could allow the people to choose how much sun and precipitation they would like to see. Government sanctioned clear days could even be made for sporting events and city events.
+      %p I urge the city of Southfield to reconsider its weather policy and consider a lighter snow fall. I would appreciate Spring all year round but I understand that the heating budget is tight with our economy in a recession. I can't say I know the specifics but I visited a relative of mine in Florida and they've managed to feature Summer each month without raising taxes significantly. A citizen's choice initiative could allow the people to choose how much sun and precipitation they would like to see. Government sanctioned clear days could even be made for sporting events and city events.
 
-    %p Thank you for your time and I hope that you will consider my proposal to modify the weather schedule for 2012.
+      %p Thank you for your time and I hope that you will consider my proposal to modify the weather schedule for 2012.
 
-    %p Regards,
+      %p Regards,
 
-    %p Eric Wright
+      %p Eric Wright
 
-%figure.portrait.widget
-  %img{width: '500px', src: "http://res.cloudinary.com/hke8udxd5/image/upload/a_exif/v1356053258/gyueubhxgk68dkn2wisl.jpg"}
+  %figure.portrait.widget
+    %img{width: '500px', src: "http://res.cloudinary.com/hke8udxd5/image/upload/a_exif/v1356053258/gyueubhxgk68dkn2wisl.jpg"}

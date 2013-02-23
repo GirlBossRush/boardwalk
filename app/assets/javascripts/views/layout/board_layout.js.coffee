@@ -1,6 +1,7 @@
 class Boardwalk.Views.BoardLayout extends Backbone.View
   attributes: ->
     id: 'container'
+    class: 'fullscreen'
 
   template: JST['layouts/board']
 
@@ -32,14 +33,14 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
 
     $('.widget').draggable
       grid: [5, 5]
-      containment: ".board"
+      containment: ".board .inner"
       scroll: false
       stack: ".widget"
       revert: 'invalid'
       stop: ->
         $(this).draggable('option','revert','invalid')
 
-    $('.board').droppable
+    $('.board .inner').droppable
       tolerance: 'fit'
 
     $('.widget').droppable
