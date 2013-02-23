@@ -12,9 +12,9 @@ class SessionsController < ApplicationController
                      status: 201,
                      location: nil)
     else
-      respond_with({ authenticated: false },
+      respond_with({ errors: { email: ["password combination was not found."] } },
                      status: :unprocessable_entity,
-                     location: nil )
+                     location: nil)
     end
   end
 

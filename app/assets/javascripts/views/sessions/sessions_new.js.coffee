@@ -26,4 +26,5 @@ class Boardwalk.Views.SessionsNew extends Backbone.View
 
 
       error: ->
+        $form[0].reset()
         $form.find('input:first').focus()
