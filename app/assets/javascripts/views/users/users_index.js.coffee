@@ -3,7 +3,8 @@ class Boardwalk.Views.UsersIndex extends Backbone.View
   template: JST['users/index']
 
   initialize: ->
-    @collection.on('reset', @render, this)
+    @collection.on 'reset', @render, @
+    @collection.on 'add', @appendUser, @
 
   events:
     'click .id': 'showUser'
@@ -22,5 +23,5 @@ class Boardwalk.Views.UsersIndex extends Backbone.View
     e.preventDefault()
     id = $(e.target).data('id')
 
-    user = new Boardwalk.Models.User(id: id)
+    user = new Boardwalk.Models.User({id})
     user.show()

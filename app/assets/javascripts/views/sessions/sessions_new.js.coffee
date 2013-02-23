@@ -6,7 +6,7 @@ class Boardwalk.Views.SessionsNew extends Backbone.View
     'submit #new-session': 'createSession'
 
   render: ->
-    $(@el).html(@template())
+    @$el.html(@template())
     this
 
   createSession: (e) ->
