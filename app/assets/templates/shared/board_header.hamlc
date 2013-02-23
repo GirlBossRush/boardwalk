@@ -1,0 +1,12 @@
+%header.site-header
+  %nav.site-navigation
+    %ul
+      %li
+        %a#help(href="#settings") = @user.get('username')
+      %li
+        %a#edit-widgets(href="#edit-widgets") Edit
+      %li
+        %a#login(href="#logout") Log out
+  %aside#flash.message-center
+    .accent ❖
+    %ul.messages

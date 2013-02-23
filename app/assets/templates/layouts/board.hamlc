@@ -1,2 +1,3 @@
+!= JST['shared/board_header'](user: @user)
 #content.board
   / Content has not been set.

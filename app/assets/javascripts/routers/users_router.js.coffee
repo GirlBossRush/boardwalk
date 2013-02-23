@@ -17,20 +17,24 @@ class Boardwalk.Routers.Users extends Backbone.Router
         Boardwalk.content(view.render().el)
 
   new: ->
-    layout = new Boardwalk.Views.DefaultLayout()
-    $('#container').replaceWith(layout.render().el)
+    user_id = $.cookie('user_id')
+    if user_id
+      Backbone.history.navigate("users/#{user_id}", true)
+    else
+      layout = new Boardwalk.Views.DefaultLayout()
+      $('#container').replaceWith(layout.render().el)
 
-    view = new Boardwalk.Views.UsersNew()
+      view = new Boardwalk.Views.UsersNew()
 
-    Boardwalk.setTitle("Be somebody")
-    Boardwalk.content(view.render().el)
+      Boardwalk.setTitle("Be somebody")
+      Boardwalk.content(view.render().el)
 
   show: (id) ->
     user = new Boardwalk.Models.User id: id
 
     user.fetch
       success: ->
-        layout = new Boardwalk.Views.BoardLayout(collection: @collection)
+        layout = new Boardwalk.Views.BoardLayout(model: user)
         $('#container').replaceWith(layout.render().el)
 
         view = new Boardwalk.Views.UsersShow(model: user)
@@ -39,4 +43,4 @@ class Boardwalk.Routers.Users extends Backbone.Router
 
         if Modernizr.touch == false
           debiki.Utterscroll.enable
-            scrollstoppers: '.ui-resizable-handle'
+            scrollstoppers: '.widget'

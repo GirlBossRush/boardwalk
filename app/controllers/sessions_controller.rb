@@ -20,8 +20,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    respond_with({ authenticated: false },
-                   status: 200,
-                   location: nil)
+    respond_with({ authenticated: false }, head: :ok)
   end
 end
