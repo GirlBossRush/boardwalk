@@ -25,6 +25,9 @@ module Boardwalk
     config.autoload_paths += %W(#{config.root}/lib/modules)
     config.autoload_paths += Dir["#{config.root}/lib/modules/**/"]
 
+    # Modernizr needs to be included in the header so we'll separate it.
+    config.assets.precompile += ['modernizr/*.js']
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
