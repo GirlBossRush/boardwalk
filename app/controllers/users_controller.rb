@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def check
-    if User.where(username: params[:username]).any?
+    if User.where(username: /^#{params[:username]}$/i).any?
       respond_with(available: false, message: "Username is taken.")
     else
       respond_with(available: true, message: "Username is available.")
