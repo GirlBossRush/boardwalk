@@ -1,10 +1,14 @@
+.widget
+  display: inline-block
+
+  &.overlap
+    border: 2px dashed $black
+    background-color: transparentize(red, 0.8)
+
 .blog-post
   width: 500px
 
   padding: 15px 14px
-
-  border: 1px $lightest-gray solid
-  border-radius: 5px
 
   word-wrap: break-word
   line-height: 20px
@@ -46,15 +50,10 @@
         margin-top: 0
 
 .portrait
-  display: inline-block
   padding: 15px 14px
 
-  border: 1px $lightest-gray solid
-  border-radius: 5px
 
 .ui-draggable
-
-  border: 1px $lightest-gray dotted
-
+  border: 2px $lightest-gray dotted
   &.ui-draggable-dragging
     cursor: move

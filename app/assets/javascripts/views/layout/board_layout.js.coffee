@@ -12,6 +12,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
 
   render: ->
     @$el.html(@template(user: @model))
+
     this
 
   rootURL: (e) ->
@@ -29,9 +30,22 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   editWidgets: (e) ->
     e.preventDefault()
 
-    $(".widget").draggable
-      grid: [10, 10]
-      snapMode: "outer"
-      stack: ".widget"
-      containment: "#content"
+    $('.widget').draggable
+      grid: [5, 5]
+      containment: ".board"
       scroll: false
+      stack: ".widget"
+      revert: 'invalid'
+      stop: ->
+        $(this).draggable('option','revert','invalid')
+
+    $('.board').droppable
+      tolerance: 'fit'
+
+    $('.widget').droppable
+      greedy: true
+      tolerance: 'touch'
+      hoverClass: "overlap"
+      drop: (event, ui) ->
+        ui.draggable.draggable('option','revert',true)
+
