@@ -6,7 +6,7 @@
       %li
         %a#login(href="#login") Log in
       %li
-        %a#help(href="#help") Help
+        %a#about(href="#about") About
   %aside#flash.message-center
     .accent ❖
     %ul.messages

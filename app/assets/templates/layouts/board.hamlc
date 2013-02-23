@@ -1,3 +1,4 @@
+#site-veil.veil
 != JST['shared/board_header'](user: @user)
 #content
   / Content has not been set.

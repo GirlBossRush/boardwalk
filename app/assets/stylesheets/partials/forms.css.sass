@@ -1,3 +1,31 @@
+@mixin btn
+  cursor: pointer
+  background-color: $turquoise
+  color: $white
+  padding: 4px 2px
+  font-weight: bold
+  text:
+    transform: uppercase
+    decoration: none
+    align: center
+
+  &:disabled
+    opacity: $translucent
+
+  &:hover
+    background-color: lighten($turquoise, 4%)
+    text-decoration: none
+    color: $white
+
+  &:active
+    background-color: lighten($turquoise, 2%)
+
+
+.btn
+  width: 100%
+  display: inline-block
+  +btn
+
 .input-validation
   display: none
   float: right
@@ -54,17 +82,4 @@ form.slim
           content: "\2713" // Checkmark
 
     &[type="submit"]
-      cursor: pointer
-      background-color: $turquoise
-      color: $white
-      padding: 4px 2px
-      font-weight: bold
-      text-transform: uppercase
-
-      &:disabled
-        opacity: $translucent
-
-      &:hover
-        background-color: lighten($turquoise, 4%)
-      &:active
-        background-color: lighten($turquoise, 2%)
+      +btn

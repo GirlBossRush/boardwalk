@@ -4,6 +4,7 @@ class Boardwalk.Views.DefaultLayout extends Backbone.View
   events:
     'click #home': "rootURL"
     'click #login': "loginURL"
+    'click #about, #dismiss-modal, #site-veil': 'toggleAbout'
 
   template: JST['layouts/default']
 
@@ -18,3 +19,7 @@ class Boardwalk.Views.DefaultLayout extends Backbone.View
   loginURL: (e) ->
     e.preventDefault()
     Backbone.history.navigate('/login', true)
+
+  toggleAbout: (e) ->
+    e.preventDefault()
+    $('#site-veil, .about.modal').fadeToggle()

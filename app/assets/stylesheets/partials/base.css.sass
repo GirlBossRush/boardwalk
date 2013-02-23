@@ -14,6 +14,7 @@ $header-height: 28px
 $low-priority: 1
 $medium-priority: 999
 $high-priority: 9999
+$highest-priority: 99999
 
 $site-background: image-url("worn_dots.png")
 $site-background-size: 200px
@@ -179,6 +180,37 @@ strong
       width: 25px
       height: 25px
 
+
+.modal
+  z-index: $highest-priority
+  width: 600px
+  margin: 60px auto 40px
+  padding: 2px 20px 16px
+
+  position: absolute
+  left: 50%
+  margin-left: -300px
+  top: 40px
+
+  border: 1px solid darken($white, 2%)
+  +linear-gradient(315deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 97%, 0.95))
+  box-shadow: inset 1px 1px 0px hsl(0, 0%, 99%), 12px 16px 44px hsla(0, 0%, 77%, 0.5)
+
+  .modal-header
+    text-align: center
+
+.veil
+  display: none
+  background: $site-background
+  background-size: $site-background-size
+
+  opacity: 0.5
+  z-index: $high-priority
+  position: fixed
+  top: 0
+  left: 0
+  height: 100%
+  width: 100%
 
 
 // Correct highlighted text selection

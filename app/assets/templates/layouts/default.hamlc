@@ -1,4 +1,19 @@
+#site-veil.veil
 != JST['shared/header']()
 #content
   / Content has not been set.
 != JST['shared/footer']()
+%section.about.modal
+  %header.modal-header
+    %h2 What's this all about?
+
+  %h3 Express your individuality.
+  %p
+    Boardwalk lets you create a board full of your favorite photos and blog posts.
+
+  %h3 Join your friends.
+  %p
+    Show your friends how important they are by asking to be neighbors.
+    Create a network of personal expression only limited by your imagination!
+
+  %a.btn#dismiss-modal(href="#modal-confirmation") Got it

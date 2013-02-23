@@ -46,3 +46,4 @@ class Boardwalk.Views.UsersNew extends Backbone.View
       $input[0].setCustomValidity("Passwords do not match.")
     else
       $input[0].setCustomValidity(null)
+
