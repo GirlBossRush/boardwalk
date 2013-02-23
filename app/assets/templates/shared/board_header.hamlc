@@ -1,12 +1,24 @@
 %header.site-header
   %nav.site-navigation
     %ul
-      %li
-        %a#help(href="#settings") = @user.get('username')
-      %li
-        %a#edit-widgets(href="#edit-widgets") Edit
-      %li
-        %a#login(href="#logout") Log out
+      - if $.cookie('user_id') == @user.get('_id')
+        %li
+          %a#settings(href="#settings") = @user.get('username')
+        %li
+          %a#edit-widgets(href="#edit-widgets") Edit
+
+      - else
+        %li
+          %a#home(href="#home") Home
+
+      - if $.cookie('user_id')
+        %li
+          %a#logout(href="#logout") Log out
+
+      - else
+        %li
+          %a#login(href="#login") Log in
+
   %aside#flash.message-center
     .accent ❖
     %ul.messages
