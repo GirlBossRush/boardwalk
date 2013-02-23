@@ -1,5 +1,7 @@
 class Boardwalk.Views.UsersShow extends Backbone.View
-
+  tagName: 'section'
+  attributes:
+    class: 'board'
   template: JST['users/show']
 
   render: ->
