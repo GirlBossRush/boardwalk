@@ -6,7 +6,7 @@
       .forest-green.box
       .burnt-orange.box
   .hero.text Boardwalk
-  .sell Be somebody.
+  .sell Express yourself.
 
 %section.registration
   %form#new-session.slim

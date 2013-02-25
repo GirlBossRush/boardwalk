@@ -26,7 +26,7 @@ class Boardwalk.Routers.Users extends Backbone.Router
 
       view = new Boardwalk.Views.UsersNew()
 
-      Boardwalk.setTitle("Be somebody")
+      Boardwalk.setTitle("Express yourself")
       Boardwalk.content(view.render().el)
 
   show: (id) ->
