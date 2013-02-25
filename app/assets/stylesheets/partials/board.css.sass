@@ -1,8 +1,16 @@
 $board-width: 3832px // 2 * (1920 - scrollbar-height)
 $board-height: 2152px // 2 * (1080 - scrollbar-height)
+$neighbor-size: 25px
 $navigate-prefix: "Visit "
 
+@mixin panning
+  cursor: move
+
 #container
+  #content
+    margin-top: $header-height + $neighbor-size
+    margin-bottom: 25px
+
   &.zoomed-out
     .board
       cursor: -moz-zoom-in
@@ -10,6 +18,8 @@ $navigate-prefix: "Visit "
       +transform(scale(0.5))
       +transform-origin(0 0)
 
+      &.panning
+        +panning
 .board
   // border: 1px dashed $black
   width: $board-width
@@ -21,9 +31,13 @@ $navigate-prefix: "Visit "
   +transform(scale(1.0))
   +transform-origin(0 0)
 
+  cursor: -moz-grab
+  cursor: -webkit-grab
+
+  &.panning
+    +panning
 
   .inner
-    width: 100%
     height: 100%
     margin: 25px
 
@@ -32,7 +46,7 @@ $navigate-prefix: "Visit "
 
 .neighbor
   position: fixed
-  background-color: transparentize($white, 0.7)
+  background-color: $white
   display: inline-block
   z-index: $medium-priority
   display: table
@@ -41,7 +55,11 @@ $navigate-prefix: "Visit "
   opacity: 0.3
 
   &:hover
-    opacity: 0.8
+    +transition-property(all)
+    +transition-duration($fast)
+    opacity: 0.95
+    z-index: $high-priority
+
   a
     width: 100%
     height: 100%
@@ -52,16 +70,16 @@ $navigate-prefix: "Visit "
       color: inherit
       text-decoration: none
 
+  // Cardinal direction styling
   &#north, &#south
     width: 100%
-    min-height: 25px
-    margin: 0 25px
+    height: $neighbor-size
 
   &#north
     top: $header-height
     a
       &:before
-        content: '\2191'
+        content: '\2191' // Up arrow
       &:hover:after
         display: block
         content: $navigate-prefix attr(data-name)
@@ -70,15 +88,15 @@ $navigate-prefix: "Visit "
     bottom: 0
     a
       &:after
-        content: '\2193'
+        content: '\2193' // Down arrow
       &:hover:before
         display: block
         content: $navigate-prefix attr(data-name)
 
   &#east, &#west
-    top: $header-height
+    top: $header-height + $neighbor-size
     height: 100%
-    min-width: 25px
+    min-width: $neighbor-size
     a:hover:after
       display: block
       margin: 0 10px
@@ -87,8 +105,8 @@ $navigate-prefix: "Visit "
   &#west
     left: 0
     a:before
-      content: '\2190'
+      content: '\2190' // Left arrow
   &#east
     right: 0
     a:before
-      content: '\2192'
+      content: '\2192' // Right arrow

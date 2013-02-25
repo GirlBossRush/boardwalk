@@ -331,7 +331,7 @@ debiki.Utterscroll.enable = function(options) {
   function startScroll(event) {
     $(document).mousemove(doScroll);
     $(document).mouseup(stopScroll);
-    $(document.body).css('cursor', 'move');
+    $('.board').addClass('panning');
 
     // Y is the distance to the top.
     startPos = { x: event.clientX, y: event.clientY };
@@ -408,7 +408,7 @@ debiki.Utterscroll.enable = function(options) {
     $elemToScroll = undefined;
     startPos = undefined;
     lastPos = undefined;
-    $(document.body).css('cursor', '');  // cancel 'move' cursor
+    $('.board').removeClass('panning');  // cancel 'move' cursor
     $.event.remove(document, 'mousemove', doScroll);
     $.event.remove(document, 'mouseup', stopScroll);
     return false;
