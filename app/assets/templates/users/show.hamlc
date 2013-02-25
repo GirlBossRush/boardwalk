@@ -1,11 +1,3 @@
-#north.neighbor
-  %a Norbert North
-#east.neighbor
-  %a Eve East
-#south.neighbor
-  %a Sally South
-#west.neighbor
-  %a Walter West
 .inner
   %article.widget.blog-post
     %header.blog-header

@@ -34,12 +34,16 @@ class Boardwalk.Routers.Users extends Backbone.Router
 
     user.fetch
       success: ->
+        Boardwalk.setTitle(user.get('username'))
+
         layout = new Boardwalk.Views.BoardLayout(model: user)
         $('#container').replaceWith(layout.render().el)
 
         view = new Boardwalk.Views.UsersShow(model: user)
-        Boardwalk.setTitle(_.string.titleize(user.get('username')))
         Boardwalk.content(view.render().el)
+
+        neighbors = new Boardwalk.Views.UsersNeighbors(model: user)
+        $('#content').prepend(neighbors.render().el)
 
         if Modernizr.touch == false
           debiki.Utterscroll.enable
