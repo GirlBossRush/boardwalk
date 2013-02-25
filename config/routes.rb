@@ -2,6 +2,7 @@ Boardwalk::Application.routes.draw do
   scope 'api' do
     resources :boards
     resources :users
+    resources :widgets
     resources :sessions
     get 'check/:username', to: 'users#check', as: 'check'
   end
