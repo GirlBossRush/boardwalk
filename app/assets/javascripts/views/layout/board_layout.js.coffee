@@ -10,6 +10,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     'click #login': "loginURL"
     'click #logout': "logoutURL"
     'click #edit-widgets': 'editWidgets'
+    'dblclick .board': "toggleZoom"
 
   render: ->
     @$el.html(@template(user: @model))
@@ -28,6 +29,9 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     e.preventDefault()
     Backbone.history.navigate('/logout', true)
 
+  toggleZoom: (e) ->
+    $('#container').toggleClass('zoomed-out')
+
   editWidgets: (e) ->
     e.preventDefault()
 
@@ -37,6 +41,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
       scroll: false
       stack: ".widget"
       revert: 'invalid'
+      refreshPositions: true
       stop: ->
         $(this).draggable('option','revert','invalid')
 

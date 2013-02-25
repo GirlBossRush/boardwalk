@@ -1,0 +1,21 @@
+#north.neighbor
+  %a{href: '#', data: {name: "Robert Thatcher"}}
+#east.neighbor
+  %a{href: '#', data: {name: "John Carmack"}}
+#south.neighbor
+  %a{href: '#', data: {name: "Mary Sue"}}
+#west.neighbor
+  %a{href: '#', data: {name: "John Johnson"}}
+
+/ #north.neighbor
+/   - if @user.get('north_neighbor_id')
+/     %a{href: "/users/#{@user.get('north_neighbor_id')}"} = @user.get('north_neighbor_id')
+/ #east.neighbor
+/   - if @user.get('east_neighbor_id')
+/     %a{href: "/users/#{@user.get('east_neighbor_id')}"} = @user.get('east_neighbor_id')
+/ #south.neighbor
+/   - if @user.get('south_neighbor_id')
+/     %a{href: "/users/#{@user.get('south_neighbor_id')}"} = @user.get('south_neighbor_id')
+/ #west.neighbor
+/   - if @user.get('west_neighbor_id')
+/     %a{href: "/users/#{@user.get('west_neighbor_id')}"} = @user.get('west_neighbor_id')
