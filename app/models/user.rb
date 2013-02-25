@@ -34,7 +34,8 @@ class User
 
     self.neighbors.each do |neighbor|
       user[:neighbors] << { direction: neighbor.direction,
-                            user_id: neighbor.connection_id }
+                            username: neighbor.connection.username,
+                            user_id: neighbor.connection.id }
     end
 
     return user

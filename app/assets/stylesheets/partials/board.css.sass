@@ -82,7 +82,7 @@ $navigate-prefix: "Visit "
         content: '\2191' // Up arrow
       &:hover:after
         display: block
-        content: $navigate-prefix attr(data-name)
+        content: $navigate-prefix attr(data-username)
 
   &#south
     bottom: 0
@@ -91,7 +91,7 @@ $navigate-prefix: "Visit "
         content: '\2193' // Down arrow
       &:hover:before
         display: block
-        content: $navigate-prefix attr(data-name)
+        content: $navigate-prefix attr(data-username)
 
   &#east, &#west
     top: $header-height + $neighbor-size
@@ -100,7 +100,7 @@ $navigate-prefix: "Visit "
     a:hover:after
       display: block
       margin: 0 10px
-      content: $navigate-prefix attr(data-name)
+      content: $navigate-prefix attr(data-username)
 
   &#west
     left: 0
