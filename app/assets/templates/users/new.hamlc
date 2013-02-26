@@ -43,10 +43,10 @@
 
     .field
       %label{for: 'user-password-confirmation'} Confirmation
-      %input#user_password_confirmation{type: 'password',
+      %input#user-password-confirmation{type: 'password',
                                         name: 'user[password_confirmation]',
                                         placeholder: 'Confirmation',
-                                        matches: 'user_password',
+                                        matches: 'user-password',
                                         required: true}
       .input-validation
 
