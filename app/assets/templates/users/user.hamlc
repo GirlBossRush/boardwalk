@@ -1,5 +1,6 @@
 %td
-  %a.id{ href: "users/#{@user.get('_id')}", data: { id: @user.get('_id') } } = @user.get('_id')
+  %a.id{ href: "users/#{@user.get('username')}",
+         data: { username: @user.get('username') } } = @user.get('_id')
 %td = @user.get('username')
 %td = @user.get('email')
 %td

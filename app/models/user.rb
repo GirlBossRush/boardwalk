@@ -1,12 +1,14 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Slug
   include ActiveModel::SecurePassword
 
   has_secure_password
   attr_accessible :username, :email, :password, :password_confirmation
 
   field :username
+  slug { |current_model| current_model.username.downcase }
   field :email, type: String
   field :password_digest, type: String
 

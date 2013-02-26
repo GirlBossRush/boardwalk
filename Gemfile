@@ -11,6 +11,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Database
 gem 'mongoid'
 gem 'bson_ext'
+gem 'mongoid_slug'
 
 # Javascript
 gem 'jquery-rails'
