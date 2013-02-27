@@ -4,6 +4,7 @@ window.Boardwalk =
   Views: {}
   Routers: {}
   init: ->
+    $.cookie.json = true
     new Boardwalk.Routers.Application
     new Boardwalk.Routers.Users
     new Boardwalk.Routers.Sessions
