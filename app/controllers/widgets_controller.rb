@@ -1,8 +1,9 @@
 class WidgetsController < ApplicationController
+  before_filter :fetch_user
   respond_to :json, :html
 
   def index
-    respond_with Widget.all
+    respond_with @user.widgets
   end
 
   def show

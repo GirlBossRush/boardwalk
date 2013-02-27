@@ -3,10 +3,10 @@ class Widget
 
   attr_accessible :type, :body, :file, :x, :y
 
-  field :type
-  field :body
-  field :x
-  field :y
+  field :type, type: String
+  field :body, type: String
+  field :x, type: Fixnum, default: -> { 0 }
+  field :y, type: Fixnum, default: -> { 0 }
 
   belongs_to :user
 end

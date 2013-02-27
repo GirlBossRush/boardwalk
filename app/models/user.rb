@@ -7,7 +7,7 @@ class User
   has_secure_password
   attr_accessible :username, :email, :password, :password_confirmation
 
-  field :username
+  field :username, type: String
   slug { |current_model| current_model.username.downcase }
   field :email, type: String
   field :password_digest, type: String
@@ -26,6 +26,7 @@ class User
             uniqueness: { case_sensitive: false })
 
   has_and_belongs_to_many :neighbors, inverse_of: :users
+  has_many :widgets, inverse_of: nil
 
 
   # The JSON representation of the neighbor data does not reflect the database
