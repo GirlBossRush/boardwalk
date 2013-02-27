@@ -5,5 +5,3 @@ class Boardwalk.Views.User extends Backbone.View
   render: ->
     $(@el).html(@template(user: @model))
     this
-
-

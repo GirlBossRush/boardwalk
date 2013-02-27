@@ -1,5 +1,6 @@
 class Widget
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   attr_accessible :type, :body, :file, :x, :y
 

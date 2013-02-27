@@ -4,8 +4,6 @@
       - if @currentUser.get('username') == @user.get('username')
         %li
           %a#settings(href="#settings") = @user.get('username')
-        %li
-          %a#edit-widgets(href="#edit-widgets") Edit
 
       - else
         %li
@@ -18,6 +16,12 @@
       - else
         %li
           %a#login(href="#login") Log in
+
+      - if @currentUser.get('username') == @user.get('username')
+        %li
+          %a#edit-widgets(href="#edit-widgets") Edit
+
+
 
   %aside#flash.message-center
     .accent ❖

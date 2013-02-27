@@ -1,0 +1,7 @@
+.widget-content{class: @widget.get('type')}
+  %header.blog-header
+    %h2 Title
+    %time.timestamp{datetime: @widget.get('created_at')} = @widget.get('created_at')
+
+  %section.body
+    = @widget.get('body')
