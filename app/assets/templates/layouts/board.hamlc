@@ -1,4 +1,5 @@
 #site-veil.veil
-!= JST['shared/board_header'](user: @user)
+!= JST['shared/board_header']({@user, @currentUser})
+!= JST['users/neighbors']({@user})
 #content
   / Content has not been set.

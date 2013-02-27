@@ -18,12 +18,7 @@ class Boardwalk.Views.SessionsNew extends Backbone.View
     session = new Boardwalk.Models.Session(attributes)
 
     session.save null,
-      wait: true
-      success: ->
-        userData = session.get('user')
-        $.cookie('user_id', userData._id)
-        Backbone.history.navigate("users/#{userData._id}", true)
-
+      navigate: true
 
       error: ->
         $form[0].reset()

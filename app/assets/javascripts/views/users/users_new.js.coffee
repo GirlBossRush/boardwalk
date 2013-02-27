@@ -16,15 +16,14 @@ class Boardwalk.Views.UsersNew extends Backbone.View
     $form = $(e.target)
     attributes = $form.serializeObject()
 
-    @user = new Boardwalk.Models.User(attributes)
+    user = new Boardwalk.Models.User(attributes)
 
-    @user.save null,
+    user.save null,
       wait: true
       success: ->
-        $form[0].reset()
-        Boardwalk.flashMessage(
-          ["Your registration was successful but Boardwalk is still a work in progress.",
-           "More features coming soon."])
+        session = new Boardwalk.Models.Session(attributes)
+        session.save null,
+          navigate: true
 
       error: ->
         $form.find('input:first').focus()

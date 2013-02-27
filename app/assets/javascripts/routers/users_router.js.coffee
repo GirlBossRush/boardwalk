@@ -17,9 +17,9 @@ class Boardwalk.Routers.Users extends Backbone.Router
         Boardwalk.content(view.render().el)
 
   new: ->
-    user_id = $.cookie('user_id')
-    if user_id
-      Backbone.history.navigate("users/#{user_id}", true)
+    currentUser = new Boardwalk.Models.User($.cookie('current_user'))
+    if currentUser.get('username')
+      Backbone.history.navigate("users/#{currentUser.get('username')}", true)
     else
       layout = new Boardwalk.Views.DefaultLayout()
       $('#container').replaceWith(layout.render().el)
@@ -30,21 +30,28 @@ class Boardwalk.Routers.Users extends Backbone.Router
       Boardwalk.content(view.render().el)
 
   show: (id) ->
+    currentUser = new Boardwalk.Models.User($.cookie('current_user'))
     user = new Boardwalk.Models.User id: id
 
     user.fetch
       success: ->
         Boardwalk.setTitle(user.get('username'))
 
-        layout = new Boardwalk.Views.BoardLayout(model: user)
+        layout = new Boardwalk.Views.BoardLayout({user, currentUser})
         $('#container').replaceWith(layout.render().el)
 
         view = new Boardwalk.Views.UsersShow(model: user)
         Boardwalk.content(view.render().el)
 
-        neighbors = new Boardwalk.Views.UsersNeighbors(model: user)
-        $('#content').prepend(neighbors.render().el)
-
         if Modernizr.touch == false
           debiki.Utterscroll.enable
             scrollstoppers: '.widget'
+
+      error: ->
+        layout = new Boardwalk.Views.DefaultLayout()
+        $('#container').replaceWith(layout.render().el)
+
+        view = new Boardwalk.Views.NotFound()
+        Boardwalk.setTitle "Page not found"
+
+        Boardwalk.content(view.render(path: id).el)

@@ -13,15 +13,11 @@ class Boardwalk.Routers.Sessions extends Backbone.Router
     Boardwalk.content(view.render().el)
 
   destroy: ->
-    user_id = $.cookie('user_id')
-    if user_id
-      # Regardless of the server's response, we should get rid of the cookie.
-      $.removeCookie('user_id')
-
-      session = new Boardwalk.Models.Session(id: user_id)
+    user = $.cookie('current_user')
+    if user.id
+      session = new Boardwalk.Models.Session(id: user.id)
       session.destroy
-        success: ->
-          Backbone.history.navigate('/login', true)
+        navigate: true
     else
       # The user must have navigated here.
       Backbone.history.navigate('/login', true)

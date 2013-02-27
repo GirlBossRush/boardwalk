@@ -12,9 +12,8 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     'click #edit-widgets': 'editWidgets'
     'dblclick .board': "toggleZoom"
 
-  render: ->
-    @$el.html(@template(user: @model))
-
+  render: () ->
+    @$el.html(@template(@options))
     this
 
   rootURL: (e) ->
