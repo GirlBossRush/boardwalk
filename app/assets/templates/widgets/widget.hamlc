@@ -1,7 +1,10 @@
-.widget-content{class: @widget.get('type')}
-  %header.blog-header
-    %h2 Title
-    %time.timestamp{datetime: @widget.get('created_at')} = @widget.get('created_at')
+%header.blog-header
+  %h2
+    X:
+    = @widget.get('x')
+    Y:
+    = @widget.get('y')
+  %time.timestamp{datetime: @widget.get('created_at')} = @widget.get('created_at')
 
-  %section.body
-    = @widget.get('body')
+%section.body
+  = @widget.get('body')

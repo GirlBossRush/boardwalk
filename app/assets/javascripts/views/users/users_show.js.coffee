@@ -11,5 +11,5 @@ class Boardwalk.Views.UsersShow extends Backbone.View
 
   appendWidget: (widget) =>
     view = new Boardwalk.Views.Widget(model: widget)
-    @$("#widgets").append view.render().el
+    @$("#widget-content").append view.render().el
     @$('time').timeago()
