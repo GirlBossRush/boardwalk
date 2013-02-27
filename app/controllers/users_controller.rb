@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :fetch_user, only: [:show, :update, :destroy]
   respond_to :json, :html
 
   def index
@@ -6,11 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if Moped::BSON::ObjectId.legal?(params[:id])
-      respond_with User.find(params[:id])
-    else
-      respond_with User.find_by(_slugs: /^#{params[:id]}$/i)
-    end
+    respond_with @user
   end
 
   def create
@@ -18,11 +15,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_with User.find(params[:id]).update_attributes(params[:user])
+    respond_with @user.update_attributes(params[:user])
   end
 
   def destroy
-    respond_with User.destroy(params[:id])
+    respond_with @user.destroy
   end
 
   def check

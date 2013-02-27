@@ -9,7 +9,7 @@ class Boardwalk.Models.Session extends Backbone.Model
       success: (model) ->
         userData = model.get('user')
 
-        $.cookie 'current_user', {id: userData._id, username: userData.username},
+        $.cookie 'current_user', {_id: userData._id, username: userData.username},
           path: '/'
 
         initialSuccess()

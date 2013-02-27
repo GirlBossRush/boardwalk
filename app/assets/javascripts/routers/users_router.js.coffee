@@ -31,7 +31,7 @@ class Boardwalk.Routers.Users extends Backbone.Router
 
   show: (id) ->
     currentUser = new Boardwalk.Models.User($.cookie('current_user'))
-    user = new Boardwalk.Models.User id: id
+    user = new Boardwalk.Models.User _id: id
 
     user.fetch
       success: ->
