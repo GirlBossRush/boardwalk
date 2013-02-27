@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    respond_with User.find_by(_slugs: /^#{params[:id]}$/i)
+    if Moped::BSON::ObjectId.legal?(params[:id])
+      respond_with User.find(params[:id])
+    else
+      respond_with User.find_by(_slugs: /^#{params[:id]}$/i)
+    end
   end
 
   def create
