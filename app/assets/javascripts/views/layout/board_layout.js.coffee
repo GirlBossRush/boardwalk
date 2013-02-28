@@ -37,6 +37,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
 
   toggleEditWidgets: (e) ->
     $("#container").toggleClass('editing')
+    $("#container").removeClass('zoomed-in')
     e.preventDefault()
     $widget = $('.widget')
     if $widget.hasClass('ui-draggable') == true
