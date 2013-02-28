@@ -46,10 +46,6 @@ class Boardwalk.Routers.Users extends Backbone.Router
             view = new Boardwalk.Views.UsersShow(model: user, collection: user.widgets)
             Boardwalk.content(view.render().el)
 
-            if Modernizr.touch == false
-              debiki.Utterscroll.enable
-                scrollstoppers: '.widget'
-
       error: ->
         layout = new Boardwalk.Views.DefaultLayout()
         $('#container').replaceWith(layout.render().el)

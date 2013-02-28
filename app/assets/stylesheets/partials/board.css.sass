@@ -1,5 +1,7 @@
-$board-width: 3832px // 2 * (1920 - scrollbar-height)
-$board-height: 2152px // 2 * (1080 - scrollbar-height)
+// $board-width: 3832px // 2 * (1920 - scrollbar-height)
+// $board-height: 2152px // 2 * (1080 - scrollbar-height)
+$board-width: 1916px
+$board-height: 1076px
 $neighbor-size: 25px
 $navigate-prefix: "Visit "
 
@@ -11,15 +13,16 @@ $navigate-prefix: "Visit "
     margin-top: $header-height + $neighbor-size
     margin-bottom: 25px
 
-  &.zoomed-out
+  &.zoomed-in
     .board
-      cursor: -moz-zoom-in
-      cursor: -webkit-zoom-in
-      +transform(scale(0.5))
+      cursor: -moz-zoom-out
+      cursor: -webkit-zoom-out
+      +transform(scale(2.0))
       +transform-origin(0 0)
 
       &.panning
         +panning
+
 .board
   // border: 1px dashed $black
   width: $board-width

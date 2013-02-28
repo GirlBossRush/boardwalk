@@ -2595,10 +2595,11 @@ $.ui.intersect = function(draggable, droppable, toleranceMode) {
 		case "fit":
 			return (l <= x1 && x2 <= r && t <= y1 && y2 <= b);
 		case "intersect":
-			return (l < x1 + (draggable.helperProportions.width / 2) && // Right Half
-				x2 - (draggable.helperProportions.width / 2) < r && // Left Half
-				t < y1 + (draggable.helperProportions.height / 2) && // Bottom Half
-				y2 - (draggable.helperProportions.height / 2) < b ); // Top Half
+			// 02-28-13: Modified to prevent any overlap.
+			return (l < x1 + (draggable.helperProportions.width) && // Right Half
+				x2 - (draggable.helperProportions.width) < r && // Left Half
+				t < y1 + (draggable.helperProportions.height) && // Bottom Half
+				y2 - (draggable.helperProportions.height) < b ); // Top Half
 		case "pointer":
 			draggableLeft = ((draggable.positionAbs || draggable.position.absolute).left + (draggable.clickOffset || draggable.offset.click).left);
 			draggableTop = ((draggable.positionAbs || draggable.position.absolute).top + (draggable.clickOffset || draggable.offset.click).top);
