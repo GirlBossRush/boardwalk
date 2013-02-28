@@ -6,6 +6,9 @@ class Boardwalk.Views.Widget extends Backbone.View
       ['widget', @model.get('type')].join(' ')
     id: =>
       @model.id
+    'data-user-id': =>
+      @model.get('user_id')
+
     style: =>
       "top: #{@model.get('y')}px; left: #{@model.get('x')}px;"
   render: ->

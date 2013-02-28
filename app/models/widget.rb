@@ -2,7 +2,7 @@ class Widget
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  attr_accessible :type, :body, :file, :x, :y
+  attr_accessible :type, :body, :file, :x, :y, :user_id
 
   field :type, type: String
   field :body, type: String

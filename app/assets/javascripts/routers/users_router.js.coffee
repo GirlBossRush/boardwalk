@@ -40,7 +40,7 @@ class Boardwalk.Routers.Users extends Backbone.Router
         layout = new Boardwalk.Views.BoardLayout({user, currentUser})
         $('#container').replaceWith(layout.render().el)
 
-        user.widgets()
+        user.initWidgets()
         user.widgets.fetch
           success: ->
             view = new Boardwalk.Views.UsersShow(model: user, collection: user.widgets)

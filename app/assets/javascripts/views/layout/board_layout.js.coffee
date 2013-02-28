@@ -2,9 +2,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   attributes: ->
     id: 'container'
     class: 'fullscreen'
-
   template: JST['layouts/board']
-
   events:
     'click #home': "rootURL"
     'click #login': "loginURL"
@@ -12,24 +10,16 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     'click #edit-widgets': 'toggleEditWidgets'
     'dblclick .board': "toggleZoom"
 
-  render: () ->
+  initialize: (params) ->
+    #REFACTOR: We're fetching twice. It'd be proper to just the data from the user model.
+    # @collection.fetch()
+    @collection = params.user
+  render: ->
     @$el.html(@template(@options))
     if Modernizr.touch == false
       debiki.Utterscroll.enable
         scrollstoppers: ".widget:not('.zoomed')"
     this
-
-  rootURL: (e) ->
-    e.preventDefault()
-    Backbone.history.navigate('/', true)
-
-  loginURL: (e) ->
-    e.preventDefault()
-    Backbone.history.navigate('/login', true)
-
-  logoutURL: (e) ->
-    e.preventDefault()
-    Backbone.history.navigate('/logout', true)
 
   toggleZoom: (e) ->
     $container = $("#container")
@@ -46,6 +36,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
         $widget.draggable('option', 'disabled', true)
 
   toggleEditWidgets: (e) ->
+    $("#container").toggleClass('editing')
     e.preventDefault()
     $widget = $('.widget')
     if $widget.hasClass('ui-draggable') == true
@@ -62,8 +53,14 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
         revert: 'invalid'
         refreshPositions: true
 
-        stop: ->
-          $(@).draggable('option','revert','invalid')
+        stop: (event, ui) =>
+          window.c = @collection
+
+          widget = @collection.widgets.get(ui.helper.attr('id'))
+          widget.set(x: ui.position.left, y: ui.position.top)
+          window.w = widget
+          # Prevent collisions
+          $widget.draggable('option','revert','invalid')
 
         drag: (event, ui) ->
           $(event.target).find('h2').text("X: #{ui.position.left} Y: #{ui.position.top}")
@@ -80,3 +77,14 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
         drop: (event, ui) ->
           ui.draggable.draggable('option','revert',true)
 
+  rootURL: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate('/', true)
+
+  loginURL: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate('/login', true)
+
+  logoutURL: (e) ->
+    e.preventDefault()
+    Backbone.history.navigate('/logout', true)
