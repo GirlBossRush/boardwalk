@@ -56,8 +56,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
       $('.widget').draggable
         containment: ".board .inner"
         scroll: false
-        grid: [2,2]
-        snap: true
+        grid: [10,10]
         snapMode: 'outer'
         stack: ".widget"
         revert: 'invalid'
