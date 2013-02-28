@@ -14,8 +14,8 @@ class Boardwalk.Routers.Sessions extends Backbone.Router
 
   destroy: ->
     user = $.cookie('current_user')
-    if user.id
-      session = new Boardwalk.Models.Session(id: user.id)
+    if user._id
+      session = new Boardwalk.Models.Session(id: user._id)
       session.destroy
         navigate: true
     else
