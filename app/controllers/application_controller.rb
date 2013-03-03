@@ -5,7 +5,13 @@ class ApplicationController < ActionController::Base
   private
     def current_user
       if session[:user_id]
-        @current_user ||= User.find(session[:user_id])
+        begin
+          @current_user ||= User.find(session[:user_id])
+        rescue Mongoid::Errors::DocumentNotFound
+          logger.error("User ID #{session[:user_id]} tried to login but cannot be found.")
+          cookies[:current_user] = nil
+          session.delete(:user_id)
+        end
       end
     end
 
