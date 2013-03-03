@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+users = [
+  { username: 'Foo',
+    email: '1@example.com'},
+  { username: 'Bar',
+    email: '2@example.com'},
+  { username: 'Foobar',
+    email: '3@example.com'}]
+
+users.each do |user|
+  User.create!(user.merge(password: 'password', password_confirmation: 'password'))
+end
