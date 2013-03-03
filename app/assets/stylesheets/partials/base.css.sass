@@ -185,6 +185,14 @@ strong
       height: 25px
 
 
+.unimportant
+  opacity: 0.5
+  +transition-property(opacity)
+  +transition-duration($fast)
+
+  &:hover
+    opacity: 1.0
+
 .modal
   z-index: $highest-priority
   width: 600px

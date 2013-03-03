@@ -1,4 +1,6 @@
-- for neighbor in @user.get('neighbors')
-  %aside.neighbor{id: neighbor.direction}
+- directions = ['north', 'east', 'south', 'west']
+
+- for neighbor, i in @user.get('neighbors')
+  %aside.neighbor{id: directions[i]}
     %a{href: "/users/#{neighbor.user_id}", data: {username: neighbor.username}}
 

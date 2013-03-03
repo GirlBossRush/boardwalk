@@ -1,0 +1,57 @@
+%header.modal-header
+  %h2.username
+    = @user.get('username')
+    .join-date.unimportant
+      Joined
+      %time{datetime: @user.get('created_at')} = @user.get('created_at')
+  %form.slim#edit-user
+
+    %h3 You
+
+    .field
+      %label{for: 'user-email'} Username
+      %input#user-email{type: 'email',
+                        name: 'user[email]',
+                        placeholder: 'Email',
+                        required: true,
+                        pattern: ".+@.+\..+",
+                        value: @user.get('email')}
+      .input-validation
+
+    .field
+      %label{for: 'user-password'} Password
+      %input#user-password{type: 'password',
+                           name: 'user[password]',
+                           placeholder: 'Change password'}
+      .input-validation
+
+    .field
+      %label{for: 'user-password-confirmation'} Confirmation
+      %input#user-password-confirmation{type: 'password',
+                                        name: 'user[password_confirmation]',
+                                        placeholder: 'Confirmation',
+                                        matches: 'user-password'}
+      .input-validation
+
+    %h3 Neighbors
+    - for neighbor in @user.get('neighbors')
+      .field
+        %label{for: 'user-neighbor'} = neighbor.username
+        %input#user-neighbor{type: 'text',
+                             name: 'user[neighbors]',
+                             value: neighbor.username,
+                             pattern: "^[a-zA-Z0-9\-_]+$"}
+        .input-validation
+        / %a.delete-neighbor{href: '#delete-neighbor', data: {id: neighbor.user_id}} &#x2715;
+
+    - if @user.get('neighbors').length < 4
+      .field
+        %input#user-neighbor{type: 'text',
+                             placeholder: 'Add neighbor',
+                             name: 'user[neighbors]',
+                             pattern: "^[a-zA-Z0-9\-_]+$"}
+        .input-validation
+
+    %label{for: 'user-submit'} Submit
+    %input#user-submit{type: 'submit', value: 'Save'}
+

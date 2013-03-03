@@ -16,6 +16,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     @collection = params.user
   render: ->
     @$el.html(@template(@options))
+
     if Modernizr.touch == false
       debiki.Utterscroll.enable
         scrollstoppers: ".widget:not('.zoomed')"

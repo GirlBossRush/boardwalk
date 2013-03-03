@@ -5,7 +5,7 @@ class User
   include ActiveModel::SecurePassword
 
   has_secure_password
-  attr_accessible :username, :email, :password, :password_confirmation
+  attr_accessible :username, :email, :password, :password_confirmation, :neighbors_attributes
 
   field :username, type: String
   slug { |current_model| current_model.username.downcase }
@@ -25,7 +25,10 @@ class User
             format: /.+@.+\..+/i, # Just an '@' and a '.'
             uniqueness: { case_sensitive: false })
 
-  has_and_belongs_to_many :neighbors, inverse_of: :users
+  has_many :neighbors, class_name: 'User', inverse_of: :users
+  belongs_to :users, inverse_of: :neighbors
+  # accepts_nested_attributes_for :neighbors
+
   has_many :widgets, inverse_of: nil
 
 
@@ -36,9 +39,8 @@ class User
     user[:neighbors] = []
 
     self.neighbors.each do |neighbor|
-      user[:neighbors] << { direction: neighbor.direction,
-                            username: neighbor.connection.username,
-                            user_id: neighbor.connection.id }
+      user[:neighbors] << { username: neighbor.username,
+                            user_id: neighbor.id }
     end
 
     return user
