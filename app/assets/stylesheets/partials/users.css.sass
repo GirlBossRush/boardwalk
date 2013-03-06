@@ -28,3 +28,18 @@
 
   h3
     font-weight: normal
+
+  a
+    &.delete-neighbor
+      opacity: 0.5
+      font-size: 1.3em
+      float: right
+      height: 0
+      position: relative
+      bottom: 5px
+
+      &:hover
+        opacity: 1.0
+        text-decoration: none
+      &:hover ~ .user-neighbor
+        text-decoration: line-through

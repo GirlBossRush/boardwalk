@@ -46,14 +46,15 @@ form.slim
     font-weight: normal
     text-align: center
 
+  .field
+    margin: 14px 0
+
   input
-    width: 100%
+    min-width: 100%
     font-family: $basic-fonts
     font-size: 14px
     border: 0
     display: block
-
-    margin: 14px 0
 
     background: transparent
     +placeholder
@@ -61,14 +62,13 @@ form.slim
 
     &[type="text"], &[type="password"], &[type="email"]
       padding: 3px 6px
+      border-bottom: 1px dotted transparent
 
-      &:hover
-        margin-bottom: -1px
+      &:hover, &:read-only
         border-bottom: 1px dotted $lightest-gray
 
       &:focus
         outline: 0
-        margin-bottom: -1px
         border-bottom: 1px dotted $gray
 
         & ~ .input-validation
@@ -81,6 +81,7 @@ form.slim
         &:valid ~ .input-validation:after
           color: $green
           content: "\2713" // Checkmark
+
 
     &[type="submit"]
       +btn
