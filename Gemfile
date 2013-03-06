@@ -21,6 +21,7 @@ gem 'backbone-on-rails'
 gem 'haml'
 
 group :development do
+  gem 'thin'
   gem 'pry-rails'
 end
 
