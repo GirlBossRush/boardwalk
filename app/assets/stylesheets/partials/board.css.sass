@@ -22,7 +22,13 @@ $navigate-prefix: "Visit "
 
       &.panning
         +panning
+
+
   &.editing
+    .board
+      .inner
+        border: 1px dotted $gray
+
     .neighbor
       visibility: hidden
 .board
@@ -46,8 +52,8 @@ $navigate-prefix: "Visit "
     height: 100%
     margin: 25px
 
-    &.ui-droppable
-      border: 1px dotted $gray
+    // Prevent jittery border appearance in edit mode.
+    border: 1px solid transparent
 
 .neighbor
   position: fixed

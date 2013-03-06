@@ -1,6 +1,7 @@
 class Boardwalk.Views.UsersEdit extends Backbone.View
   tag: 'section'
   attributes:
+    id: 'user'
     class: 'edit-user modal'
 
   template: JST['users/edit']

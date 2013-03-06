@@ -5,6 +5,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   template: JST['layouts/board']
   events:
     'click #home': "rootURL"
+    'click #settings, #site-veil': "toggleUserSettings"
     'click #login': "loginURL"
     'click #logout': "logoutURL"
     'click #edit-widgets': 'toggleEditWidgets'
@@ -90,3 +91,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   logoutURL: (e) ->
     e.preventDefault()
     Backbone.history.navigate('/logout', true)
+
+  toggleUserSettings: (e) ->
+    e.preventDefault()
+    $('#site-veil, #user').fadeToggle()
