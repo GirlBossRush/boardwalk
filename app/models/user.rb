@@ -25,8 +25,10 @@ class User
             format: /.+@.+\..+/i, # Just an '@' and a '.'
             uniqueness: { case_sensitive: false })
 
-  has_many :neighbors, class_name: 'User', inverse_of: :users
-  belongs_to :users, inverse_of: :neighbors
+  has_and_belongs_to_many :users, inverse_of: :neighbors
+  has_and_belongs_to_many :neighbors, class_name: 'User', inverse_of: :users
+
+  # belongs_to :users, inverse_of: :neighbors
   # accepts_nested_attributes_for :neighbors
 
   has_many :widgets, inverse_of: nil

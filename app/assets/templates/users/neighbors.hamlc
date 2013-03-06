@@ -2,5 +2,5 @@
 
 - for neighbor, i in @user.get('neighbors')
   %aside.neighbor{id: directions[i]}
-    %a{href: "/users/#{neighbor.user_id}", data: {username: neighbor.username}}
+    %a{href: "/users/#{neighbor.username}", data: {username: neighbor.username}}
 
