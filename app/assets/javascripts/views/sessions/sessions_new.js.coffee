@@ -13,7 +13,7 @@ class Boardwalk.Views.SessionsNew extends Backbone.View
     e.preventDefault()
 
     $form = $(e.target)
-    attributes = $form.serializeObject()
+    attributes = $form.serializeForm()
 
     session = new Boardwalk.Models.Session(attributes)
 

@@ -14,7 +14,7 @@ class Boardwalk.Views.UsersNew extends Backbone.View
   createUser: (e) ->
     e.preventDefault()
     $form = $(e.target)
-    attributes = $form.serializeObject()
+    attributes = $form.serializeForm()
 
     user = new Boardwalk.Models.User(attributes)
 
