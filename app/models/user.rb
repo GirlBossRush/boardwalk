@@ -47,7 +47,7 @@ class User
     self.neighbors.clear
     users = []
     neighbor_names.each do |name|
-      users << User.find_by(_slugs: /^#{name}$/i) unless name.blank?
+      users << User.where(_slugs: /^#{name}$/i).first unless name.blank?
     end
     self.neighbors << users
   end
