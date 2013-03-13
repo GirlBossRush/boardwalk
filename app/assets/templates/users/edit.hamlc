@@ -34,26 +34,21 @@
       .input-validation
 
     %h3 Neighbors
-    - for neighbor in @user.get('neighbors')
-      .field
-        %label{for: "user-neighbor-#{neighbor.username}"} = neighbor.username
-        %a.delete-neighbor{for: "user-neighbor-#{neighbor.username}", href: '#delete-neighbor'} &#x2715;
-        %input.user-neighbor{id: "user-neighbor-#{neighbor.username}",
-                        type: 'text',
-                        name: 'user[neighbors][]',
-                        value: neighbor.username,
-                        readonly: true,
-                        pattern: "^[a-zA-Z0-9\-_]+$"}
+    .user-neighbors
+      - for neighbor in @user.get('neighbors')
+        .field.read-only
+          %label{for: "user-neighbor-#{neighbor.username}"} = neighbor.username
+          %a.delete-neighbor{href: '#delete-neighbor'} &#x2715;
+          %input{id: "user-neighbor-#{neighbor.username}",
+                          type: 'text',
+                          name: 'user[neighbors][]',
+                          value: neighbor.username,
+                          readonly: true,
+                          pattern: "^[a-zA-Z0-9\-_]+$"}
 
 
-    - if @user.get('neighbors').length < 4
-      .field
-        %input#user-new-neighbor{type: 'text',
-                                 placeholder: 'Add neighbor',
-                                 name: 'user[neighbors][]',
-                                 optional: true,
-                                 pattern: "^[a-zA-Z0-9\-_]+$"}
-        .input-validation
+      - if @user.get('neighbors').length < 4
+        != JST['users/new_neighbor']()
 
     %label{for: 'user-submit'} Submit
     %input#user-submit{type: 'submit', value: 'Save'}

@@ -5,24 +5,34 @@ class Boardwalk.Views.UsersEdit extends Backbone.View
     class: 'edit-user modal'
 
   template: JST['users/edit']
+  newNeighbor: JST['users/new_neighbor']
 
   events:
     'submit #edit-user': 'updateUser'
     'click .delete-neighbor': 'deleteNeighbor'
     'keyup #user-password-confirmation': 'checkPassword'
-
+    'keyup .user-new-neighbor': 'addNeighborToForm'
   render: ->
     $(@el).html(@template(user: @model))
     @$('time').timeago()
     this
 
+  addNeighborToForm: (e) ->
+    if e.keyCode == 13 # Enter
+      e.preventDefault()
+      $input = $(e.target)
+      $input.parent(".field").removeClass('writable')
+      $input.prop('readonly', true)
+
+      $(".user-neighbors").append(@newNeighbor())
+      $(".user-neighbors .user-new-neighbor:last").focus()
 
   deleteNeighbor: (e) ->
     e.preventDefault()
-    neighborID = $(e.target).attr('for')
+    $fieldContainer = $(e.target).parent('.field')
 
-    $("##{neighborID}, a[for='#{neighborID}']").fadeOut 200, ->
-      @.remove()
+    $fieldContainer.fadeOut 200, ->
+      @remove()
 
   updateUser: (e) ->
     e.preventDefault()

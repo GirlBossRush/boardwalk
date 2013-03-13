@@ -1,0 +1,9 @@
+.field.writable
+  %label New Neighbor
+  %a.delete-neighbor{href: '#delete-neighbor'} &#x2715;
+  %input.user-new-neighbor{type: 'text',
+                           placeholder: 'Add neighbor',
+                           name: 'user[neighbors][]',
+                           optional: true,
+                           pattern: "^[a-zA-Z0-9\-_]+$"}
+  .input-validation
