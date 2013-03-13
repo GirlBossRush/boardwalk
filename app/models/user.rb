@@ -46,8 +46,10 @@ class User
 
     self.neighbors.clear
     users = []
-    neighbor_names.each do |name|
-      users << User.where(_slugs: /^#{name}$/i).first unless name.blank?
+    neighbor_names.reject!(&:blank?)
+
+    neighbor_names[0...4].each do |name|
+      users << User.where(_slugs: /^#{name}$/i).first
     end
     self.neighbors << users
   end
