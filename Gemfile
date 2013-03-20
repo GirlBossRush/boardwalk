@@ -13,6 +13,11 @@ gem 'mongoid'
 gem 'bson_ext'
 gem 'mongoid_slug'
 
+
+# Uploads
+gem 'carrierwave-mongoid', require:'carrierwave/mongoid'
+
+
 # Javascript
 gem 'jquery-rails'
 gem 'backbone-on-rails'
