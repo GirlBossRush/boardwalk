@@ -40,7 +40,11 @@ class Boardwalk.Views.UsersEdit extends Backbone.View
     $form = $(e.target)
     attributes = $form.serializeForm()
     @model.set(attributes)
-    @model.save()
+    @model.save null,
+      wait: true
+      success: ->
+        # $('#site-veil, #user').fadeOut()
+        window.location.reload()
 
   # TODO: This method already exists for the user creation view.
   #       How can I write this once and get the method elsewhere? Modules?
