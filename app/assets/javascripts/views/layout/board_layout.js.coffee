@@ -23,6 +23,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
         scrollstoppers: ".widget:not('.zoomed')"
     this
 
+
   toggleZoom: (e) ->
     $container = $("#container")
     $container.toggleClass('zoomed-in')
@@ -45,6 +46,11 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     if $widget.hasClass('ui-draggable') == true
       $widget.draggable('destroy')
       $(e.target).text("Edit")
+
+      # Start saving the changed widgets
+      @collection.widgets.each (widget, i) ->
+        if widget.hasChanged()
+          widget.save()
     else
       $(e.target).text("Save")
       $('.widget').draggable
