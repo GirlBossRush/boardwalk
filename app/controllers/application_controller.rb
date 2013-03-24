@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     end
 
     def fetch_user
-      id = params[:id] || params[:user_id]
+      id = params[:user_id] || params[:id]
 
       if Moped::BSON::ObjectId.legal?(id)
         @user = User.find(id)
