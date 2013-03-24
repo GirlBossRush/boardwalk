@@ -1,0 +1,11 @@
+%header.modal-header
+  %h2 Add a Widget
+
+  %form.slim#new-widget
+    .field
+      %label{for: 'widget-description'} Description
+      %textarea#widget-description{placeholder: 'Description'}
+
+    %label{for: 'widget-submit'} Submit
+    %input#widget-submit{type: 'submit', value: 'Create Widget'}
+

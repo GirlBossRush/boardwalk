@@ -44,9 +44,12 @@ class Boardwalk.Routers.Users extends Backbone.Router
         user.widgets.fetch
           success: ->
             view = new Boardwalk.Views.UsersShow(model: user, collection: user.widgets)
-            userSettings = new Boardwalk.Views.UsersEdit(model: user)
+            usersSettings = new Boardwalk.Views.UsersEdit(model: user)
+            usersNewWidget = new Boardwalk.Views.UsersNewWidget(model: user)
             $('#content').html(view.render().el)
-            $('#content').append(userSettings.render().el)
+            $('#content').append(usersSettings.render().el)
+            $('#content').append(usersNewWidget.render().el)
+
 
       error: ->
         layout = new Boardwalk.Views.DefaultLayout()

@@ -42,17 +42,18 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     $("#container").toggleClass('editing')
     $("#container").removeClass('zoomed-in')
     e.preventDefault()
-    $widget = $('.widget')
-    if $widget.hasClass('ui-draggable') == true
-      $widget.draggable('destroy')
-      $(e.target).text("Edit")
+    $widgets = $('.widget')
+    if $("#container").hasClass('editing')
+      $widgets.draggable('destroy')
+      window.f = $(e.target)
+      $(e.target).text("Save")
 
-      # Start saving the changed widgets
+     # Start saving the changed widgets
       @collection.widgets.each (widget, i) ->
         if widget.hasChanged()
           widget.save()
     else
-      $(e.target).text("Save")
+      $(e.target).text("Edit")
       $('.widget').draggable
         containment: ".board .inner"
         scroll: false
