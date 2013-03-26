@@ -1,12 +1,12 @@
 class Boardwalk.Views.UsersNewWidget extends Backbone.View
   tag: 'section'
   attributes:
-    id: 'new-user'
-    class: 'new-widget modal'
+    id: 'new-widget-modal'
+    class: 'new-widget-modal modal'
 
   template: JST['users/new_widget']
   events:
-    'submit #new-widget': 'createWidget'
+    'submit #new-widget-form': 'createWidget'
 
   render: ->
     $(@el).html(@template(user: @model))
@@ -21,5 +21,4 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
     @model.widgets.create attributes,
       wait: true
       success: ->
-        console.log "SUCCESS!"
-    window.foo = @model
+        $('#new-widget-modal, #site-veil').fadeOut()

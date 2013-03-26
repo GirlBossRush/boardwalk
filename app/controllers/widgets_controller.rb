@@ -11,7 +11,8 @@ class WidgetsController < ApplicationController
   end
 
   def create
-    respond_with Widget.create(params[:widget])
+    user = User.find(params[:user_id])
+    respond_with user, Widget.create(params[:widget])
   end
 
   def update

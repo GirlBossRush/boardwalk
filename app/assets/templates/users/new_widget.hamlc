@@ -1,7 +1,7 @@
 %header.modal-header
   %h2 Add a Widget
 
-  %form.slim#new-widget
+  %form.slim#new-widget-form
     %input#user-id{type: 'hidden', name: 'user_id', value: "#{@user.id}"}
     %input#user-id{type: 'hidden', name: 'widget[user_id]', value: "#{@user.id}"}
     .field

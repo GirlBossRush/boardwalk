@@ -9,18 +9,17 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     'click #login': "loginURL"
     'click #logout': "logoutURL"
     'click #edit-widgets': 'toggleEditWidgets'
+    'click #new-widget': 'toggleNewWidget'
     'dblclick .board': "toggleZoom"
 
   initialize: (params) ->
-    #REFACTOR: We're fetching twice. It'd be proper to just the data from the user model.
-    # @collection.fetch()
     @collection = params.user
   render: ->
     @$el.html(@template(@options))
 
-    if Modernizr.touch == false
-      debiki.Utterscroll.enable
-        scrollstoppers: ".widget:not('.zoomed')"
+    #if Modernizr.touch == false
+    debiki.Utterscroll.enable
+      scrollstoppers: ".widget:not('.zoomed')"
     this
 
 
@@ -104,3 +103,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   toggleUserSettings: (e) ->
     e.preventDefault()
     $('#site-veil, #user').fadeToggle()
+
+  toggleNewWidget: (e) ->
+    e.preventDefault()
+    $('#site-veil, #new-widget-modal').fadeToggle()
