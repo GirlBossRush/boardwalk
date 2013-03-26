@@ -39,22 +39,25 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
         $widget.draggable('option', 'disabled', true)
 
   toggleEditWidgets: (e) ->
-    $("#container").toggleClass('editing')
-    $("#container").removeClass('zoomed-in')
     e.preventDefault()
+
+    $("#container").removeClass('zoomed-in')
     $widgets = $('.widget')
+
     if $("#container").hasClass('editing')
+      $("#container").removeClass('editing')
       $widgets.draggable('destroy')
-      window.f = $(e.target)
-      $(e.target).text("Save")
+      $(e.target).text("Edit")
 
      # Start saving the changed widgets
       @collection.widgets.each (widget, i) ->
         if widget.hasChanged()
           widget.save()
     else
-      $(e.target).text("Edit")
-      $('.widget').draggable
+      $(e.target).text("Save")
+      $("#container").addClass('editing')
+
+      $widgets.draggable
         containment: ".board .inner"
         scroll: false
         grid: [10,10]
@@ -64,13 +67,12 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
         refreshPositions: true
 
         stop: (event, ui) =>
-          window.c = @collection
-
           widget = @collection.widgets.get(ui.helper.attr('id'))
           widget.set(x: ui.position.left, y: ui.position.top)
           window.w = widget
+
           # Prevent collisions
-          $widget.draggable('option','revert','invalid')
+          $widgets.draggable('option','revert','invalid')
 
         drag: (event, ui) ->
           $(event.target).find('h2').text("X: #{ui.position.left} Y: #{ui.position.top}")
@@ -79,7 +81,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
       $('.board .inner').droppable
         tolerance: 'fit'
 
-      $widget.droppable
+      $widgets.droppable
         greedy: true
         tolerance: 'intersect'
         hoverClass: "overlap"
