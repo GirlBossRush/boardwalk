@@ -1,7 +1,7 @@
 /* Debiki Utterscroll — dragscroll everywhere
  * http://www.debiki.com/dev/utterscroll
  *
- * Copyright (c) 2012 Kaj Magnus Lindberg (born 1979)
+ * Copyright (c) 2012 - 2013 Kaj Magnus Lindberg (born 1979)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -24,15 +24,26 @@
 if (!window.debiki) window.debiki = {};
 if (!debiki.Utterscroll) debiki.Utterscroll = {};
 
+
+
 /**
- * Enables Utterscroll.
+ * Utterscroll. API:
  *
- * Options:
+ * `enable(options)` enables Utterscroll.  Options:
  *  scrollstoppers:
  *    jQuery selectors, e.g. '.CodeMirror, div.your-class'.
  *    Dragging the mouse inside a scrollstopper never results in scrolling.
+ *
+ * `enable()` (with no options specified) enables Utterscroll and remembers
+ *   any option you specified the last time you did specify options.
+ *
+ * `disable()`
+ *
+ * `isEnabled()`
+ *
+ * `isScrolling()` is true iff the user is currently dragscrolling.
  */
-debiki.Utterscroll.enable = function(options) {
+debiki.Utterscroll = (function(options) {
 
   // Don't call console.debug in IE 9 (and 7 & 8); it's not available unless
   // the dev tools window is open. Use this safe wrapper instead of
@@ -49,14 +60,14 @@ debiki.Utterscroll.enable = function(options) {
     onHasUtterscrolled: function() {}
   };
 
-  var settings = $.extend({}, defaults, options);
-  var allScrollstoppers = settings.defaultScrollstoppers;
-  if (settings.scrollstoppers.length > 0)
-    allScrollstoppers += ', '+ options.scrollstoppers;
+  var enabled;
+  var settings;
+  var allScrollstoppers;
 
   var $elemToScroll;
   var startPos;
   var lastPos;
+
 
   // Avoids firing onHasUtterscrolled twice.
   var hasFiredHasUtterscrolled = false;
@@ -73,6 +84,9 @@ debiki.Utterscroll.enable = function(options) {
 
 
   function startScrollPerhaps(event) {
+    if (!enabled)
+      return;
+
     // Only left button drag-scrolls.
     if (event.which !== 1 )
       return;
@@ -352,6 +366,16 @@ debiki.Utterscroll.enable = function(options) {
       y: event.clientY - lastPos.y
     };
 
+    // Sometimes we should scroll in one direction only.
+    if ($elemToScroll[0] === window) {
+      // $(window).css('overflow-x') and '...-y' results in an error:
+      //  "Cannot read property 'defaultView' of undefined"
+      // therefore, always scroll, if window viewport too small.
+    } else {
+      if ($elemToScroll.css('overflow-y') === 'hidden') distNow.y = 0;
+      if ($elemToScroll.css('overflow-x') === 'hidden') distNow.x = 0;
+    }
+
     // Trigger onHasUtterscrolled(), if scrolled > min distance.
     if (!hasFiredHasUtterscrolled &&
         (distTotal.x * distTotal.x + distTotal.y * distTotal.y >
@@ -374,12 +398,12 @@ debiki.Utterscroll.enable = function(options) {
     var mul;
     if (distTotal.x > 9){
       mul = Math.log((distTotal.x - 9) / 3);
-      // if (mul > 1.7 && $.browser.opera) mul = 1.7;  // see comment above
+      if (mul > 1.7 && $.browser.opera) mul = 1.7;  // see comment above
       if (mul > 1) distNow.x *= mul;
     }
     if (distTotal.y > 5){
       mul = Math.log((distTotal.y - 5) / 2);
-      // if (mul > 1.3 && $.browser.opera) mul = 1.3;
+      if (mul > 1.3 && $.browser.opera) mul = 1.3;
       if (mul > 1) distNow.y *= mul;
     }
 
@@ -414,7 +438,38 @@ debiki.Utterscroll.enable = function(options) {
     return false;
   };
 
-};
+
+  var api = {
+    enable: function(options) {
+      enabled = true;
+
+      // If no options specified, remember any options specified last time
+      // Utterscroll was enabled.
+      if (!options && settings)
+        return;
+
+      settings = $.extend({}, defaults, options);
+      allScrollstoppers = settings.defaultScrollstoppers;
+      if (settings.scrollstoppers.length > 0)
+        allScrollstoppers += ', '+ options.scrollstoppers;
+    },
+
+    disable: function() {
+      enabled = false;
+    },
+
+    isEnabled: function() {
+      return enabled;
+    },
+
+    isScrolling: function() {
+      return !!startPos;
+    }
+  };
+
+
+  return api;
+})();
 
 //----------------------------------------
   })(jQuery);
