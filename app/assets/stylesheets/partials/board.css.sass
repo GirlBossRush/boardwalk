@@ -29,6 +29,8 @@ $navigate-prefix: "Visit "
       .inner
         border: 1px dotted $gray
 
+        .widget
+          border: 1px dotted $gray
     .site-header
       .new-widget
         display: inline-block
@@ -36,7 +38,6 @@ $navigate-prefix: "Visit "
     .neighbor
       visibility: hidden
 .board
-  // border: 1px dashed $black
   width: $board-width
   height: $board-height
 
@@ -57,7 +58,7 @@ $navigate-prefix: "Visit "
     margin: 25px
 
     // Prevent jittery border appearance in edit mode.
-    border: 1px solid transparent
+    border: 1px dashed transparent
 
 .neighbor
   position: fixed

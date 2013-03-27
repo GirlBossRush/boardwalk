@@ -9,6 +9,9 @@
     cursor: auto
     +user-select(none)
 
+    // Prevent jittery border rendering
+    border: 1px dotted transparent
+
     &.overlap
       border: 2px dashed $black
       background-color: transparentize(red, 0.8)
@@ -73,7 +76,6 @@
   cursor: -moz-grab
   cursor: -webkit-grab
 
-  border: 2px $lightest-gray dotted
   &.ui-draggable-dragging
     cursor: move
 

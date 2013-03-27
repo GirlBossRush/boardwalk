@@ -9,9 +9,9 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     'click #login': "loginURL"
     'click #logout': "logoutURL"
     'click #edit-widgets': 'toggleEditWidgets'
-    'click #new-widget': 'toggleNewWidget'
-    'dblclick .board': 'toggleNewWidget'
-    #'dblclick #container:not(.editing) .board': "toggleZoom"
+    'click #new-widget-modal .close-modal': 'toggleNewWidget'
+    'dblclick .board': 'doubleClickHandler'
+
 
   initialize: (params) ->
     @collection = params.user
@@ -24,20 +24,22 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
       scrollstoppers: ".widget:not('.zoomed')"
     this
 
+  # Backbone seems to have trouble with two separate double click actions.
+  # Let's delegate from here.
+  doubleClickHandler: (e) =>
+    if $('#container').hasClass('editing')
+      @toggleNewWidget(e)
+    else
+      @toggleZoom(e)
 
   toggleZoom: (e) ->
-    $container = $("#container")
-    $container.toggleClass('zoomed-in')
-    $widget = $('.widget')
+    $('#container').toggleClass('zoomed-in')
 
-    $widget.toggleClass('zoomed')
-
-    # REFACTOR: There's gotta be an easier way to deal with this.
-    if $widget.hasClass('ui-draggable') == true
-      if $widget.draggable('option', 'disabled') == true
-        $widget.draggable('option', 'disabled', false)
-      else
-        $widget.draggable('option', 'disabled', true)
+  toggleNewWidget: (e) ->
+    e.preventDefault()
+    if $('#container').hasClass('editing')
+      @trigger("toggleNewWidget", x: e.offsetX, y: e.offsetY)
+      $('#site-veil, #new-widget-modal').fadeToggle()
 
   toggleEditWidgets: (e) ->
     e.preventDefault()
@@ -61,7 +63,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
       $widgets.draggable
         containment: ".board .inner"
         scroll: false
-        grid: [10,10]
+        grid: [2,2]
         snapMode: 'outer'
         stack: ".widget"
         revert: 'invalid'
@@ -106,9 +108,4 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     e.preventDefault()
     $('#site-veil, #user').fadeToggle()
 
-  toggleNewWidget: (e) ->
-    e.preventDefault()
-    if $('#container').hasClass('editing')
-      @trigger("toggleNewWidget", x: e.offsetX, y: e.offsetY)
-      $('#site-veil, #new-widget-modal').fadeToggle()
 

@@ -20,9 +20,6 @@
       - if @currentUser.get('username') == @user.get('username')
         %li
           %a#edit-widgets(href="#edit-widgets") Edit
-        %li
-          %a.new-widget#new-widget(href="#new-widget") New
-
 
   %aside#flash.message-center
     .accent ❖
