@@ -5,8 +5,14 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
     class: 'new-widget-modal modal'
 
   template: JST['users/new_widget']
+
+  widget: JST['widgets/widget']
+
   events:
     'submit #new-widget-form': 'createWidget'
+
+  catchWidgetCoords: (data) =>
+    @coords = data
 
   render: ->
     $(@el).html(@template(user: @model))
@@ -16,9 +22,10 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
     e.preventDefault()
     $form = $(e.target)
     attributes = $form.serializeForm()
-    console.log attributes
+    _.extend(attributes.widget, @coords)
 
     @model.widgets.create attributes,
       wait: true
-      success: ->
+      success: (model) ->
+        console.log model
         $('#new-widget-modal, #site-veil').fadeOut()

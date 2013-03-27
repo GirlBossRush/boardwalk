@@ -46,6 +46,11 @@ class Boardwalk.Routers.Users extends Backbone.Router
             view = new Boardwalk.Views.UsersShow(model: user, collection: user.widgets)
             usersSettings = new Boardwalk.Views.UsersEdit(model: user)
             usersNewWidget = new Boardwalk.Views.UsersNewWidget(model: user)
+
+            # REFACTOR: I'm trying to get the double click event's coordinates over
+            #           to the widget form. There should be a cleaner way to do this.
+            layout.bind("toggleNewWidget", usersNewWidget.catchWidgetCoords)
+
             $('#content').html(view.render().el)
             $('#content').append(usersSettings.render().el)
             $('#content').append(usersNewWidget.render().el)

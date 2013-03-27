@@ -10,10 +10,12 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     'click #logout': "logoutURL"
     'click #edit-widgets': 'toggleEditWidgets'
     'click #new-widget': 'toggleNewWidget'
-    'dblclick .board': "toggleZoom"
+    'dblclick .board': 'toggleNewWidget'
+    #'dblclick #container:not(.editing) .board': "toggleZoom"
 
   initialize: (params) ->
     @collection = params.user
+
   render: ->
     @$el.html(@template(@options))
 
@@ -106,4 +108,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
 
   toggleNewWidget: (e) ->
     e.preventDefault()
-    $('#site-veil, #new-widget-modal').fadeToggle()
+    if $('#container').hasClass('editing')
+      @trigger("toggleNewWidget", x: e.offsetX, y: e.offsetY)
+      $('#site-veil, #new-widget-modal').fadeToggle()
+
