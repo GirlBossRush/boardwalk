@@ -1,3 +1,6 @@
+.modal-controls
+  %a.close-modal{href: "#close-modal"} &#x2715;
+
 %header.modal-header
   %h2.username
     = @user.get('username')

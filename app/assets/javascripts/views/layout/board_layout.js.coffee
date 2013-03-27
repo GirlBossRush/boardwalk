@@ -5,7 +5,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   template: JST['layouts/board']
   events:
     'click #home': "rootURL"
-    'click #settings': "toggleUserSettings"
+    'click #settings, #user .close-modal': "toggleUserSettings"
     'click #login': "loginURL"
     'click #logout': "logoutURL"
     'click #edit-widgets': 'toggleEditWidgets'
