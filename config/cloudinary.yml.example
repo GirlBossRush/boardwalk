@@ -1,0 +1,18 @@
+development:
+  cloud_name: qvaefgdada2
+  api_key: '4633352725634376395'
+  api_secret: NfI_Fi4ilnw3adadrXpszb-p1l92-4o
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: qvaefgdada2
+  api_key: '2343242352'
+  api_secret: NfI_Fi4ilnw3adadrXpszb-p1l92-4o
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: qvaefgdada2
+  api_key: '463335725676395'
+  api_secret: NfI_Fi4ilnw3adadrXpszb-p1l92-4o
+  enhance_image_tag: true
+  static_image_support: false
