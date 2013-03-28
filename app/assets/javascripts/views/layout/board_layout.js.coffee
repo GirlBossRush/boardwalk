@@ -3,6 +3,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     id: 'container'
     class: 'fullscreen'
   template: JST['layouts/board']
+
   events:
     'click #home': "rootURL"
     'click #settings, #user .close-modal': "toggleUserSettings"
@@ -59,38 +60,42 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     else
       $(e.target).text("Save")
       $("#container").addClass('editing')
+      @setDraggable()
 
-      $widgets.draggable
-        containment: ".board .inner"
-        scroll: false
-        grid: [2,2]
-        snapMode: 'outer'
-        stack: ".widget"
-        revert: 'invalid'
-        refreshPositions: true
+  setDraggable: (e) =>
+    $widgets = $('.widget')
 
-        stop: (event, ui) =>
-          widget = @collection.widgets.get(ui.helper.attr('id'))
-          widget.set(x: ui.position.left, y: ui.position.top)
-          window.w = widget
+    $widgets.draggable
+      containment: ".board .inner"
+      scroll: false
+      grid: [2,2]
+      snapMode: 'outer'
+      stack: ".widget"
+      revert: 'invalid'
+      refreshPositions: true
 
-          # Prevent collisions
-          $widgets.draggable('option','revert','invalid')
+      stop: (event, ui) =>
+        widget = @collection.widgets.get(ui.helper.attr('id'))
+        widget.set(x: ui.position.left, y: ui.position.top)
+        window.w = widget
 
-        drag: (event, ui) ->
-          $(event.target).find('h2').text("X: #{ui.position.left} Y: #{ui.position.top}")
+        # Prevent collisions
+        $widgets.draggable('option','revert','invalid')
+
+      drag: (event, ui) ->
+        $(event.target).find('h2').text("X: #{ui.position.left} Y: #{ui.position.top}")
 
 
-      $('.board .inner').droppable
-        tolerance: 'fit'
+    $('.board .inner').droppable
+      tolerance: 'fit'
 
-      $widgets.droppable
-        greedy: true
-        tolerance: 'intersect'
-        hoverClass: "overlap"
+    $widgets.droppable
+      greedy: true
+      tolerance: 'intersect'
+      hoverClass: "overlap"
 
-        drop: (event, ui) ->
-          ui.draggable.draggable('option','revert',true)
+      drop: (event, ui) ->
+        ui.draggable.draggable('option','revert',true)
 
   rootURL: (e) ->
     e.preventDefault()

@@ -51,6 +51,8 @@ class Boardwalk.Routers.Users extends Backbone.Router
             #           to the widget form. There should be a cleaner way to do this.
             layout.bind("toggleNewWidget", usersNewWidget.catchWidgetCoords)
 
+            # We need to readd new widgets to jQuery draggable on create.
+            usersNewWidget.bind('createWidget', layout.setDraggable)
             $('#content').html(view.render().el)
             $('#content').append(usersSettings.render().el)
             $('#content').append(usersNewWidget.render().el)

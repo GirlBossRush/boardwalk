@@ -12,22 +12,27 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
   catchWidgetCoords: (data) =>
     @coords = data
 
+  initialize: ->
+    @$ = $
+
   render: ->
     $(@el).html(@template(user: @model))
     this
 
-  createWidget: (e) ->
+  createWidget: (e) =>
     e.preventDefault()
-
     $form = $(e.target)
     attributes = $form.serializeForm()
     _.extend(attributes.widget, @coords)
-
-    @model.widgets.create attributes,
+    console.log attributes
+    @model.widgets.create attributes.widget,
       wait: true
-      success: (model) ->
+      success: (model) =>
+        console.log "From the success", model
         widgetView = new Boardwalk.Views.Widget({model})
         $('.board .widgets').append(widgetView.render().el)
+
         @$('time').timeago()
+        @trigger('createWidget', null)
         $('#new-widget-modal, #site-veil').fadeOut()
 
