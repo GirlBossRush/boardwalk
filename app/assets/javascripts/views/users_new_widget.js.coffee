@@ -17,7 +17,19 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
 
   render: ->
     $(@el).html(@template(user: @model))
-    this
+    @uploadImage()
+    @
+
+  uploadImage: =>
+    @$el.fileupload
+      add: (e, data) ->
+        console.log "started uploading", e, data
+
+        data.submit()
+
+
+      done: (e, data) ->
+        console.log "done uploading", e, data
 
   createWidget: (e) =>
     e.preventDefault()

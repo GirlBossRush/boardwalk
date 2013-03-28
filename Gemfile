@@ -16,7 +16,9 @@ gem 'mongoid_slug'
 
 # Uploads
 gem 'carrierwave-mongoid', require:'carrierwave/mongoid'
-
+gem 'jquery-fileupload-rails'
+gem 'mini_magick'
+gem 'cloudinary'
 
 # Javascript
 gem 'jquery-rails'

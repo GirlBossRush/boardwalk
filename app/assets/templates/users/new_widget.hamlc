@@ -4,12 +4,20 @@
 %header.modal-header
   %h2 Add a Widget
 
-  %form.slim#new-widget-form
+  // Asychronous file uploads are a pain...
+  %form.slim#new-widget-form{enctype:"multipart/form-data", multipart: true, action: "#{@user.widgets.url()}"}
     %input#user-id{type: 'hidden', name: 'user_id', value: "#{@user.id}"}
-    %input#user-id{type: 'hidden', name: 'widget[user_id]', value: "#{@user.id}"}
+    %input#widget-user-id{type: 'hidden', name: 'widget[user_id]', value: "#{@user.id}"}
+
+    // Placeholder
+    %input#widget-type{type: 'hidden', name: 'widget[type]', value: "post"}
+
     .field
       %label{for: 'widget-description'} Description
       %textarea#widget-description{name: 'widget[body]', placeholder: 'Description'}
+
+    %label{for: 'widget-image'} Image
+    %input#widget-image{type: 'file', name: 'widget[image]'}
 
     %label{for: 'widget-submit'} Submit
     %input#widget-submit{type: 'submit', value: 'Create Widget'}

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require hamlcoffee
 //= require underscore
+//=require jquery-fileupload/basic
 //= require backbone
 //= require boardwalk
 //= require_tree ../templates
