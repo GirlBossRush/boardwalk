@@ -23,6 +23,21 @@
       margin: 2px
       border: 1px dashed
 
+    .widget-controls
+      display: none
+      position: absolute
+      right: -22px
+      top: -27px
+      font-size: 3.2em
+      opacity: 0.3
+
+      &:hover
+        opacity: 0.9
+      .delete-widget
+        padding: 0 5px
+        text-decoration: none
+        display: block
+
 
 .post
   width: 250px
@@ -78,6 +93,8 @@
 
   &.ui-draggable-dragging
     cursor: move
+    cursor: -moz-grabbing
+    cursor: -webkit-grabbing
 
 .new-widget-modal
   display: none

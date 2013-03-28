@@ -7,6 +7,8 @@ $navigate-prefix: "Visit "
 
 @mixin panning
   cursor: move
+  cursor: -webkit-grabbing
+  cursor: -moz-grabbing
 
 #container
   #content
@@ -15,6 +17,7 @@ $navigate-prefix: "Visit "
 
   &.zoomed-in
     .board
+      cursor: zoom-out
       cursor: -moz-zoom-out
       cursor: -webkit-zoom-out
       +transform(scale(2.0))
@@ -31,6 +34,9 @@ $navigate-prefix: "Visit "
 
         .widget
           border: 1px dotted $gray
+
+          .widget-controls
+            display: block
     .site-header
       .new-widget
         display: inline-block

@@ -20,6 +20,7 @@ class WidgetsController < ApplicationController
   end
 
   def destroy
-    respond_with Widget.destroy(params[:id])
+    widget = Widget.find(params[:id])
+    respond_with widget.destroy
   end
 end

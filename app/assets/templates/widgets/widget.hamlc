@@ -1,3 +1,5 @@
+%section.widget-controls
+  %a.delete-widget{href: "#delete-widget", title: 'Delete'} &#x2715;
 %header.blog-header
   %h2
     X:

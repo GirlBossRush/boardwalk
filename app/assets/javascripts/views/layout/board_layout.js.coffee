@@ -9,8 +9,10 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     'click #settings, #user .close-modal': "toggleUserSettings"
     'click #login': "loginURL"
     'click #logout': "logoutURL"
+
     'click #edit-widgets': 'toggleEditWidgets'
     'click #new-widget-modal .close-modal': 'toggleNewWidget'
+    'click .widget .delete-widget': 'deleteWidget'
     'dblclick .board': 'doubleClickHandler'
 
 
@@ -39,6 +41,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   toggleNewWidget: (e) ->
     e.preventDefault()
     if $('#container').hasClass('editing')
+      # Send the mouse click off to our new widget view.
       @trigger("toggleNewWidget", x: e.offsetX, y: e.offsetY)
       $('#site-veil, #new-widget-modal').fadeToggle()
 
@@ -82,8 +85,8 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
         # Prevent collisions
         $widgets.draggable('option','revert','invalid')
 
-      drag: (event, ui) ->
         $(event.target).find('h2').text("X: #{ui.position.left} Y: #{ui.position.top}")
+      drag: (event, ui) ->
 
 
     $('.board .inner').droppable
@@ -97,6 +100,22 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
       drop: (event, ui) ->
         ui.draggable.draggable('option','revert',true)
 
+  toggleUserSettings: (e) ->
+    e.preventDefault()
+    $('#site-veil, #user').fadeToggle()
+
+  deleteWidget: (e) ->
+    e.preventDefault()
+
+    window.foo = e
+    $widget= $(foo.target).parents('.widget')
+
+    widget = @collection.widgets.get($widget.attr('id'))
+    widget.destroy
+      wait: true
+      success: ->
+        $widget.fadeOut 200, ->
+          $widget.remove()
   rootURL: (e) ->
     e.preventDefault()
     Backbone.history.navigate('/', true)
@@ -108,9 +127,4 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   logoutURL: (e) ->
     e.preventDefault()
     Backbone.history.navigate('/logout', true)
-
-  toggleUserSettings: (e) ->
-    e.preventDefault()
-    $('#site-veil, #user').fadeToggle()
-
 
