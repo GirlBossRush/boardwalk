@@ -39,7 +39,7 @@ class Boardwalk.Views.UsersEdit extends Backbone.View
 
     $form = $(e.target)
     attributes = $form.serializeForm()
-    @model.set(attributes)
+    @model.set(attributes.user)
     @model.save null,
       wait: true
       success: ->

@@ -1,7 +1,7 @@
 class Boardwalk.Models.User extends Backbone.Model
   # Rails expects the parameters in a nested format.
   toJSON: ->
-    {widget: _.clone( @attributes )}
+    {user: _.clone( @attributes )}
 
   urlRoot: "/api/users"
 
