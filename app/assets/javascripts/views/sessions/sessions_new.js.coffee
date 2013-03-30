@@ -21,5 +21,4 @@ class Boardwalk.Views.SessionsNew extends Backbone.View
       navigate: true
 
       error: ->
-        $form[0].reset()
-        $form.find('input:first').focus()
+        $form.find('input[type=password]').val('').focus()
