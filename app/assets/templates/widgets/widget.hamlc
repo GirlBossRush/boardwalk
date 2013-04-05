@@ -1,15 +1,19 @@
-%section.widget-controls
-  %a.delete-widget{href: "#delete-widget", title: 'Delete'} &#x2715;
-%header.blog-header
+%section.widget-properties
   %h2
     X:
     = @widget.get('x')
     Y:
     = @widget.get('y')
-  %time.timestamp{datetime: @widget.get('created_at')} = @widget.get('created_at')
 
-%section.body
-  - if @widget.get('image')
-    %a{href: "#{@widget.get('image').url}"}
-      %img{src: "#{@widget.get('image').thumb.url}"}
-  = @widget.get('body')
+%section.widget-controls
+  %a.delete-widget{href: "#delete-widget", title: 'Delete'} &#x2715;
+
+.inner-widget
+  %header.blog-header
+    %time.timestamp{datetime: @widget.get('created_at')} = @widget.get('created_at')
+    %section.body
+      - if @widget.get('image')
+        = console.log @widget.get('image')
+        %a{href: "#{@widget.get('image').url}"}
+          %img{src: "#{@widget.get('image').thumb.url}"}
+      = @widget.get('body')

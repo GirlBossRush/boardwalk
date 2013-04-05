@@ -26,17 +26,16 @@ $navigate-prefix: "Visit "
       &.panning
         +panning
 
-
   &.editing
     .board
       .inner
-        border: 1px dotted $gray
+        border: 1px dotted #ddd
 
         .widget
           border: 1px dotted $gray
 
-          .widget-controls
-            display: block
+        .widget-controls, .widget-properties, .edit-instructions
+          display: block
     .site-header
       .new-widget
         display: inline-block
@@ -65,6 +64,22 @@ $navigate-prefix: "Visit "
 
     // Prevent jittery border appearance in edit mode.
     border: 1px dashed transparent
+
+    .edit-instructions
+      display: none
+      z-index: $medium-priority
+      width: 420px
+      position: fixed
+      left: 50%
+      margin-left: -210px
+
+      text-align: center
+      font-size: 1.2em
+
+      background-color: transparentize($white, 0.3)
+
+      &:hover
+        opacity: 0.3
 
 .neighbor
   position: fixed

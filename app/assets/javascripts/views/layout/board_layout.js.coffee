@@ -71,22 +71,19 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     $widgets.draggable
       containment: ".board .inner"
       scroll: false
-      grid: [2,2]
       snapMode: 'outer'
       stack: ".widget"
       revert: 'invalid'
       refreshPositions: true
 
       stop: (event, ui) =>
-        widget = @collection.widgets.get(ui.helper.attr('id'))
-        widget.set(x: ui.position.left, y: ui.position.top)
-        window.w = widget
-
         # Prevent collisions
         $widgets.draggable('option','revert','invalid')
 
-        $(event.target).find('h2').text("X: #{ui.position.left} Y: #{ui.position.top}")
+        widget = @collection.widgets.get(ui.helper.attr('id'))
+        widget.set(x: ui.position.left, y: ui.position.top)
       drag: (event, ui) ->
+        $(event.target).find('h2').text("X: #{ui.position.left} Y: #{ui.position.top}")
 
 
     $('.board .inner').droppable

@@ -1,5 +1,3 @@
 .inner
+  %aside.edit-instructions Double click anywhere to add a new widget.
   %section.widgets#widget-content
-
-  / %figure.portrait.widget
-  /   %img{width: '500px', src: "http://res.cloudinary.com/hke8udxd5/image/upload/a_exif/v1356053258/gyueubhxgk68dkn2wisl.jpg"}
