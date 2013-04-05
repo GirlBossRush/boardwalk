@@ -61,7 +61,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
         if widget.hasChanged()
           widget.save()
     else
-      $(e.target).text("Save")
+      $(e.target).text("Done Editing")
       $("#container").addClass('editing')
       @setDraggable()
 
