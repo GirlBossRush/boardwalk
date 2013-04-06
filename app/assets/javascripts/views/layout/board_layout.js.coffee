@@ -104,14 +104,13 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   deleteWidget: (e) ->
     e.preventDefault()
 
-    window.foo = e
-    $widget= $(foo.target).parents('.widget')
+    $widget = $(e.target).parents('.widget')
 
-    widget = @collection.widgets.get($widget.attr('id'))
-    widget.destroy
-      wait: true
-      success: ->
-        $widget.fadeOut 200, ->
+    widgetModel = @collection.widgets.get($widget.attr('id'))
+    $widget.fadeOut 200, ->
+      widgetModel.destroy
+        wait: true
+        success: ->
           $widget.remove()
   rootURL: (e) ->
     e.preventDefault()
