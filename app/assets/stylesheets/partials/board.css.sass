@@ -26,13 +26,19 @@ $navigate-prefix: "Visit "
       &.panning
         +panning
 
+      .inner
+        .widget
+          .widget-image
+            a
+              pointer-events: all
   &.editing
     .board
       .inner
         border: 1px dotted #ddd
 
         .widget
-          border: 1px dotted $gray
+          .inner-widget
+            border: 1px dotted $gray
 
         .widget-controls, .widget-properties, .edit-instructions
           display: block

@@ -6,7 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   version :thumbnail do
-    process resize_to_limit: [200, 200]
+    process resize_to_limit: [400, 400]
     process convert: 'jpg'
 
     cloudinary_transformation quality: 90

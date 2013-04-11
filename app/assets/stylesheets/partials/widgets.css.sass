@@ -15,9 +15,10 @@
     &.overlap
       // What to display when the user is trying to
       // overlap widgets.
-      border: 2px dashed $black
-      background-color: transparentize(red, 0.8)
+      background-color: transparentize(red, 0.5)
 
+      .widget-properties
+        color: red
     .widget-content
       display: inline-block
       min-width: 100%
@@ -53,10 +54,18 @@
       &:hover
         opacity: 0.9
 
+    .widget-image
+      a
+        display: block
+        // Prevent users from accidentally click on images when zooming.
+        pointer-events: none
+      img
+        max-width: 200px
+        display: inline-block
     &.post
       .inner-widget
-        width: 250px
-        padding: 15px 14px
+        max-width: 500px
+        padding: 5px
 
         word-wrap: break-word
         line-height: 10px
