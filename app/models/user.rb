@@ -17,6 +17,7 @@ class User
   slug { |current_model| current_model.username.downcase }
   field :email, type: String
   field :password_digest, type: String
+  field :role, type: String, default: -> { 'unprivileged' }
 
   validates(:username,
             presence: true,

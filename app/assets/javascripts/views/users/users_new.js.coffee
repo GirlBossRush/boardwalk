@@ -16,7 +16,7 @@ class Boardwalk.Views.UsersNew extends Backbone.View
     $form = $(e.target)
     attributes = $form.serializeForm()
 
-    user = new Boardwalk.Models.User(attributes)
+    user = new Boardwalk.Models.User(attributes.user)
 
     user.save null,
       wait: true

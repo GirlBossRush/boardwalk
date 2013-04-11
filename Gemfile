@@ -5,13 +5,14 @@ ruby '1.9.3'
 gem 'rails', '3.2.11'
 gem 'unicorn'
 
-# Authentication/Authorization
-gem 'bcrypt-ruby', '~> 3.0.0'
-
 # Database
 gem 'mongoid'
 gem 'bson_ext'
 gem 'mongoid_slug'
+
+# Authentication/Authorization
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'cancan'
 
 
 # Uploads

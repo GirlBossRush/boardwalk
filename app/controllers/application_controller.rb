@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :current_user
+  check_authorization
+
+  rescue_from CanCan::AccessDenied do |exception|
+    render(nothing: true, status: 403, layout: false)
+  end
 
   private
     def current_user
@@ -25,6 +30,9 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def current_ability
+      @current_ability ||= Ability.new(@current_user)
+    end
     helper_method :current_user
     helper_method :fetch_user
   #end_private

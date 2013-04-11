@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  authorize_resource
   before_filter :fetch_user, only: [:show, :update, :destroy]
   respond_to :json, :html
 

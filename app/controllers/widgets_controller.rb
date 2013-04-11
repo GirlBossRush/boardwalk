@@ -1,4 +1,5 @@
 class WidgetsController < ApplicationController
+  load_and_authorize_resource
   before_filter :fetch_user
   respond_to :json, :html
 

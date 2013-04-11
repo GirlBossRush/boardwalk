@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_authorization_check
   respond_to :json
 
   def create
