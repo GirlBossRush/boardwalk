@@ -9,6 +9,7 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
   events:
     'submit #new-widget-form': 'createWidget'
     'click .close-modal': 'closeWidgetModal'
+    'keyup #widget-description': 'previewMarkdown'
 
   initialize: ->
     @$ = $
@@ -23,9 +24,29 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
     @fileUploadInit()
     @
 
+  previewMarkdown: (e) ->
+    $this = $(e.target)
+    $form = $this.parents('form')
+
+    $preview = $form.find(".preview")
+    $previewBody = $preview.children(".body")
+
+    if $this.val() != ''
+      if $preview.is(":hidden")
+        $preview.slideDown(200)
+      $previewBody.html(Boardwalk.markdownConverter.makeHtml($this.val()))
+    else
+      # Avoid jittery animation.
+      $previewBody.html("&nbsp;")
+      $preview.slideUp(200)
+
   closeWidgetModal: (e) ->
     e.preventDefault()
     $('#site-veil, #new-widget-modal').fadeToggle 250, =>
+      @$el.find("form")[0].reset()
+      @$el.find('.preview .body').val('')
+      @$el.find('.preview').hide()
+
       $fakeFileUpload = @$el.find(".fake-file-upload")
       $fakeFileUpload.attr("data-file", "No file selected")
     # FIXME: Files do not get cleared even if the form is closed.

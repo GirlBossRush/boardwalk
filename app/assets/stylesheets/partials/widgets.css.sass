@@ -1,3 +1,32 @@
+@mixin widget-markdown-rendered
+  text-align: left
+  font-size: 1em
+  h1
+    font-size: 1.3em
+  h2
+    font-size: 1.25em
+  h3
+    font-size: 1.15em
+  h4, h5, h6
+    font-size: 1em
+  em
+    font-style: italic
+  code
+    font-family: monospace
+    white-space: pre
+  blockquote
+    border-left: 2px solid $black
+    padding: 4px
+    color: $black
+
+  p
+    margin: 10px 0
+
+    &:last-child
+      margin-bottom: 0
+    &:first-child
+      margin-top: 0
+
 .widgets
   min-height: 100%
   position: relative
@@ -93,32 +122,7 @@
 
         .body
           max-width: 200px
-          h1
-            font-size: 1.3em
-          h2
-            font-size: 1.25em
-          h3
-            font-size: 1.15em
-          h4, h5, h6
-            font-size: 1em
-          em
-            font-style: italic
-          code
-            font-family: monospace
-            white-space: pre
-          blockquote
-            border-left: 2px solid $black
-            padding: 4px
-            color: $black
-
-          p
-            margin: 10px 0
-
-            &:last-child
-              margin-bottom: 0
-            &:first-child
-              margin-top: 0
-
+          +widget-markdown-rendered
 .ui-draggable
   cursor: crosshair
   cursor: -moz-grab
@@ -136,11 +140,37 @@
 .new-widget-modal
   display: none
 
+  .preview
+    display: none
+    box-shadow: inset 1px 1px 10px #ccc
+    margin-bottom: 10px
+    padding: 4px 8px
+    min-height: 30px
+
+    background-color: rgb(250, 250, 250)
+    .body
+      +widget-markdown-rendered
+      font-size: 0.8em
+
+  .markdown-support
+    font-size: 0.6em
+    position: absolute
+    text-align: right
+    right: 55px
+    margin: 5px
+    text-transform: uppercase
+    opacity: 0.15
+    +user-select(none)
+
+    &:hover
+      +transition-property(opacity)
+      +transition-duration($fast)
+      opacity: 0.4
+
   input[type=file]
     opacity: 0
     margin-bottom: 10px
     padding: 5px
-
   .fake-file-upload
     float: left
     width: 0
@@ -155,7 +185,7 @@
       color: $white
 
       z-index: -1
-      width: 155px
+      width: 135px
       background-color: $burnt-orange
 
       &:hover
@@ -166,7 +196,7 @@
       display: inline-block
       width: 300px
       top: -27px
-      left: 165px
+      left: 145px
       position: relative
       content: attr(data-file)
       text-align: left

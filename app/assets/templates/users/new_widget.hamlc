@@ -18,8 +18,12 @@
 
     .field
       %label{for: 'widget-description'} Description
+      .markdown-support{title: "Your post will automagically be rendered through Markdown."} Markdown
       %textarea#widget-description{name: 'widget[body]', placeholder: 'Description'}
 
+    .preview
+      .markdown-support Preview
+      .body
     %label{for: 'widget-submit'} Submit
-    %input#widget-submit{type: 'submit', value: 'Add Image'}
+    %input#widget-submit{type: 'submit', value: 'Save'}
 
