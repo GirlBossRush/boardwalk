@@ -21,9 +21,6 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   render: ->
     @$el.html(@template(@options))
 
-    #if Modernizr.touch == false
-    debiki.Utterscroll.enable
-      scrollstoppers: ".widget:not('.zoomed')"
     this
 
   # Backbone seems to have trouble with two separate double click actions.
@@ -70,6 +67,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     $widgets.draggable
       containment: ".board .inner"
       scroll: false
+      snap: true
       snapMode: 'outer'
       stack: ".widget"
       revert: 'invalid'

@@ -5,6 +5,7 @@ class Boardwalk.Routers.Users extends Backbone.Router
     'users/:id': 'show'
 
   index: ->
+    debiki.Utterscroll.disable()
     collection = new Boardwalk.Collections.Users()
     layout = new Boardwalk.Views.DefaultLayout()
     $('#container').replaceWith(layout.render().el)
@@ -17,6 +18,7 @@ class Boardwalk.Routers.Users extends Backbone.Router
         Boardwalk.content(view.render().el)
 
   new: ->
+    debiki.Utterscroll.disable()
     currentUser = new Boardwalk.Models.User($.cookie('current_user'))
     if currentUser.get('username')
       Backbone.history.navigate("users/#{currentUser.get('username')}", true)
@@ -56,7 +58,7 @@ class Boardwalk.Routers.Users extends Backbone.Router
             $('#content').html(view.render().el)
             $('#content').append(usersSettings.render().el)
             $('#content').append(usersNewWidget.render().el)
-
+            debiki.Utterscroll.enable()
 
       error: ->
         layout = new Boardwalk.Views.DefaultLayout()

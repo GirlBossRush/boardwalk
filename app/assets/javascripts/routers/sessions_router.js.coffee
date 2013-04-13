@@ -4,6 +4,7 @@ class Boardwalk.Routers.Sessions extends Backbone.Router
     'logout': 'destroy'
 
   new: ->
+    debiki.Utterscroll.disable()
     layout = new Boardwalk.Views.DefaultLayout()
     $('#container').replaceWith(layout.render().el)
 
@@ -13,6 +14,7 @@ class Boardwalk.Routers.Sessions extends Backbone.Router
     Boardwalk.content(view.render().el)
 
   destroy: ->
+    debiki.Utterscroll.disable()
     user = $.cookie('current_user')
     if user._id
       session = new Boardwalk.Models.Session(id: user._id)
