@@ -221,8 +221,10 @@ strong
       float: right
 
       &:hover
+        +transition-property(text-shadow)
+        +transition-duration($fast)
         text-decoration: none
-
+        text-shadow: 0 0 20px #000
 .veil
   display: none
   background: $site-background

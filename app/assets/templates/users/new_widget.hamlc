@@ -2,7 +2,7 @@
   %a.close-modal{href: "#close-modal"} &#x2715;
 
 %header.modal-header
-  %h2 Add a Widget
+  %h2 Add an Image
 
   // Asychronous file uploads are a pain...
   %form.slim#new-widget-form{enctype:"multipart/form-data", multipart: true, action: "#{@user.widgets.url()}"}
@@ -12,13 +12,14 @@
     // Placeholder
     %input#widget-type{type: 'hidden', name: 'widget[type]', value: "post"}
 
+    %label{for: 'widget-image'} Image
+    .fake-file-upload{data: { file: "No file selected"}}
+    %input#widget-image{type: 'file', name: 'widget[image]'}
+
     .field
       %label{for: 'widget-description'} Description
       %textarea#widget-description{name: 'widget[body]', placeholder: 'Description'}
 
-    %label{for: 'widget-image'} Image
-    %input#widget-image{type: 'file', name: 'widget[image]'}
-
     %label{for: 'widget-submit'} Submit
-    %input#widget-submit{type: 'submit', value: 'Create Widget'}
+    %input#widget-submit{type: 'submit', value: 'Add Image'}
 

@@ -49,8 +49,9 @@ form.slim
   .field
     margin: 14px 0
 
-  input
+  input, textarea
     min-width: 100%
+    max-width: 100%
     font-family: $basic-fonts
     font-size: 14px
     border: 0
@@ -85,3 +86,8 @@ form.slim
 
     &[type="submit"]
       +btn
+
+  textarea
+    min-height: 100px
+    border: 1px solid $off-white
+

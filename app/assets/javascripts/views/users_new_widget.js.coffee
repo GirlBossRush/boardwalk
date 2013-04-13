@@ -8,6 +8,7 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
 
   events:
     'submit #new-widget-form': 'createWidget'
+    'click .widget .delete-widget': 'closeWidgetModal'
 
   initialize: ->
     @$ = $
@@ -21,6 +22,11 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
     $(@el).html(@template(user: @model))
     @fileUploadInit()
     @
+
+  closeWidgetModal: (e) ->
+    $('#site-veil, #new-widget-modal').fadeToggle()
+
+
   catchWidgetCoords: (data) =>
     # The jQuery File Upload devs seems to think this is the best way
     # to get more parameters in the form. We need to set the widget's
@@ -34,6 +40,10 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
     @$el.fileupload
       add: (e, data) =>
         @widgetFileUpload = data
+
+        $fakeFileUpload = @$el.find(".fake-file-upload")
+        # It seems that Chrome doesn't redraw with $('foo').data() setting.
+        $fakeFileUpload.attr("data-file", @widgetFileUpload.files[0].name)
       done: (e, data) =>
         newWidget = new Boardwalk.Models.Widget(data.result)
         @model.widgets.add newWidget

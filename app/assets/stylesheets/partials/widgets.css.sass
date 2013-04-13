@@ -126,3 +126,43 @@
       opacity: 0.9
 .new-widget-modal
   display: none
+
+  input[type=file]
+    opacity: 0
+    margin-bottom: 10px
+    padding: 5px
+
+  .fake-file-upload
+    float: left
+    width: 0
+    // The "button"
+    &:before
+      +btn
+      display: inline-block
+      position: relative
+      content: "Choose Image"
+      font-size: 0.7em
+      font-weight: bold
+      color: $white
+
+      z-index: -1
+      width: 155px
+      background-color: $burnt-orange
+
+      &:hover
+        background-color: lighten($burnt-orange, 5%)
+
+    // The file name field.
+    &:after
+      display: inline-block
+      width: 300px
+      top: -27px
+      left: 165px
+      position: relative
+      content: attr(data-file)
+      text-align: left
+
+      // Loooong file names
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
