@@ -58,7 +58,8 @@ class Boardwalk.Routers.Users extends Backbone.Router
             $('#content').html(view.render().el)
             $('#content').append(usersSettings.render().el)
             $('#content').append(usersNewWidget.render().el)
-            debiki.Utterscroll.enable()
+            debiki.Utterscroll.enable
+              scrollstoppers: ".widget"
 
       error: ->
         layout = new Boardwalk.Views.DefaultLayout()
