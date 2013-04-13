@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 gem 'unicorn'
 
 # Database
@@ -35,7 +35,7 @@ end
 
 group :assets do
   gem 'haml_coffee_assets'
-  gem 'bourbon', '~> 3.1.0'
+  gem 'bourbon', '~> 3.1.2.1'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
