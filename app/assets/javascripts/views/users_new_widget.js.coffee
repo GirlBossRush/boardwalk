@@ -8,7 +8,7 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
 
   events:
     'submit #new-widget-form': 'createWidget'
-    'click .widget .delete-widget': 'closeWidgetModal'
+    'click .close-modal': 'closeWidgetModal'
 
   initialize: ->
     @$ = $
@@ -24,8 +24,11 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
     @
 
   closeWidgetModal: (e) ->
-    $('#site-veil, #new-widget-modal').fadeToggle()
-
+    e.preventDefault()
+    $('#site-veil, #new-widget-modal').fadeToggle 250, =>
+      $fakeFileUpload = @$el.find(".fake-file-upload")
+      $fakeFileUpload.attr("data-file", "No file selected")
+    # FIXME: Files do not get cleared even if the form is closed.
 
   catchWidgetCoords: (data) =>
     # The jQuery File Upload devs seems to think this is the best way

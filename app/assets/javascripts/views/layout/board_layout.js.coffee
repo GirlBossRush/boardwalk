@@ -11,7 +11,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     'click #logout': "logoutURL"
 
     'click #edit-widgets': 'toggleEditWidgets'
-    'click #new-widget-modal .close-modal': 'toggleNewWidget'
+    'click .widget .delete-widget': 'deleteWidget'
     'dblclick .board': 'doubleClickHandler'
 
 
