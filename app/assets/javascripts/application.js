@@ -16,10 +16,10 @@
 //= require underscore
 //=require jquery-fileupload/basic
 //= require backbone
+//= require_tree ./libraries
 //= require boardwalk
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views
 //= require_tree ./routers
-//= require_tree ./libraries

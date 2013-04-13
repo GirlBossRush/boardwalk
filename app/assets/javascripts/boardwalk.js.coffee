@@ -10,8 +10,10 @@ window.Boardwalk =
     new Boardwalk.Routers.Sessions
     Backbone.history.start(pushState: true)
 
-Boardwalk.content = (data) ->
-  $('#content').html(data)
+  content: (data) ->
+    $('#content').html(data)
+
+  markdownConverter: new Markdown.getSanitizingConverter()
 
 $(document).ready ->
   Boardwalk.init()

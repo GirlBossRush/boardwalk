@@ -9,11 +9,10 @@
   %a.delete-widget{href: "#delete-widget", title: 'Delete'} &#x2715;
 
 .inner-widget
-  %header.blog-header
-    %section.body
-      - if @widget.get('image')
-        %figure.widget-image
-          %a{href: "#{@widget.get('image').url}"}
-            %img{src: "#{@widget.get('image').thumbnail.url}"}
-    %time.timestamp{datetime: @widget.get('created_at')} = @widget.get('created_at')
-      = @widget.get('body')
+  - if @widget.get('image')
+    %figure.widget-image
+      %time.timestamp{datetime: @widget.get('created_at')} = @widget.get('created_at')
+      %a{href: "#{@widget.get('image').url}", target: '_blank'}
+        %img{src: "#{@widget.get('image').thumbnail.url}"}
+  %section.body
+    != Boardwalk.markdownConverter.makeHtml(@widget.get('body'))

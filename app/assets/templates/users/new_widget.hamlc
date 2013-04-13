@@ -14,7 +14,7 @@
 
     %label{for: 'widget-image'} Image
     .fake-file-upload{data: { file: "No file selected"}}
-    %input#widget-image{type: 'file', name: 'widget[image]'}
+    %input#widget-image{type: 'file', name: 'widget[image]', accept: "image/png, image/jpeg, image/gif"}
 
     .field
       %label{for: 'widget-description'} Description
