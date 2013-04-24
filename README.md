@@ -1,4 +1,4 @@
-# Boardwalk
+# Boardwalk: [Demo](http://boardwalk.io)
 #### *Ego driven design*
 Boardwalk is a personal website framework built to encourage vanity.
 Users can create their own board to fill with blog posts, photos, and other customizable widgets.
