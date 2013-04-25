@@ -8,8 +8,11 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
 
   events:
     'submit #new-widget-form': 'createWidget'
-    'click .close-modal': 'closeWidgetModal'
     'keyup #widget-description': 'previewMarkdown'
+    'click .close-modal': (e) ->
+      e.preventDefault()
+      @closeWidgetModal =>
+        @clearWidgetModal()
 
   initialize: ->
     @$ = $
@@ -40,15 +43,18 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
       $previewBody.html("&nbsp;")
       $preview.slideUp(200)
 
-  closeWidgetModal: (e) ->
-    e.preventDefault()
-    $('#site-veil, #new-widget-modal').fadeToggle 250, =>
-      @$el.find("form")[0].reset()
-      @$el.find('.preview .body').val('')
-      @$el.find('.preview').hide()
+  closeWidgetModal: (callback) =>
+    @$el.fadeOut 150, ->
+      $('#site-veil').fadeOut 250, ->
+        callback?()
 
-      $fakeFileUpload = @$el.find(".fake-file-upload")
-      $fakeFileUpload.attr("data-file", "No file selected")
+  clearWidgetModal: =>
+    @$el.find("form")[0].reset()
+    @$el.find('.preview .body').val('')
+    @$el.find('.preview').hide()
+
+    $fakeFileUpload = @$el.find(".fake-file-upload")
+    $fakeFileUpload.attr("data-file", "No file selected")
     # FIXME: Files do not get cleared even if the form is closed.
 
   catchWidgetCoords: (data) =>
@@ -60,6 +66,7 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
     $form.append("<input type='hidden' name='widget[x]' value='#{data.x}'>")
     $form.append("<input type='hidden' name='widget[y]' value='#{data.y}'>")
 
+  # Widget creation with file uploading.
   fileUploadInit: =>
     @$el.fileupload
       add: (e, data) =>
@@ -68,7 +75,12 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
         $fakeFileUpload = @$el.find(".fake-file-upload")
         # It seems that Chrome doesn't redraw with $('foo').data() setting.
         $fakeFileUpload.attr("data-file", @widgetFileUpload.files[0].name)
+      submit: =>
+        @closeWidgetModal()
+        Boardwalk.flashMessage("Saving...")
+
       done: (e, data) =>
+        @clearWidgetModal()
         newWidget = new Boardwalk.Models.Widget(data.result)
         @model.widgets.add newWidget
         @appendWidget(newWidget)
@@ -78,6 +90,7 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
         @fileUploadInit()
 
 
+  # Widget creation without file uploading.
   createWidget: (e) =>
     e.preventDefault()
 
@@ -87,8 +100,11 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
       $form = $(e.target)
       attributes = $form.serializeForm()
 
+      @closeWidgetModal =>
+        @clearWidgetModal()
       @model.widgets.create attributes.widget,
         wait: true
+
         success: (model) =>
           @appendWidget(model)
 
@@ -100,5 +116,3 @@ class Boardwalk.Views.UsersNewWidget extends Backbone.View
     # We need to tell jQuery there are new widgets to set draggable.
     @trigger('createWidget', null)
 
-    $('#new-widget-modal, #site-veil').fadeOut()
-    @$el.find('form')[0].reset()
