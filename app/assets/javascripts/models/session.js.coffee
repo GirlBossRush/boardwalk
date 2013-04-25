@@ -2,7 +2,7 @@ class Boardwalk.Models.Session extends Backbone.Model
   urlRoot: "/api/sessions"
 
   save: (attributes, options) ->
-    initialSuccess = if typeof(options.success) == 'function' then options.success else () ->
+    initialSuccess = options.success
 
     _.extend options,
       wait: true
@@ -12,14 +12,14 @@ class Boardwalk.Models.Session extends Backbone.Model
         $.cookie 'current_user', {_id: userData._id, username: userData.username},
           path: '/'
 
-        initialSuccess()
-        if options.navigate == true
+        initialSuccess?()
+        if options.navigate
           Backbone.history.navigate("users/#{userData.username}", true)
 
     super(attributes, options)
 
   destroy: (options) ->
-    initialSuccess = if typeof(options.success) == 'function' then options.success else () ->
+    initialSuccess = options.success
 
     _.extend options,
       wait: true
@@ -29,8 +29,8 @@ class Boardwalk.Models.Session extends Backbone.Model
         $.cookie 'current_user', null,
           path: '/'
 
-        initialSuccess()
-        if options.navigate == true
+        initialSuccess?()
+        if options.navigate
           Backbone.history.navigate('/login', true)
 
     super(options)
