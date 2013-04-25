@@ -12,9 +12,8 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
 
     'click #edit-widgets': 'toggleEditWidgets'
     'click .widget .delete-widget': 'deleteWidget'
-    'dblclick .board': 'doubleClickHandler'
-
-
+    'click #zoom-toggle': 'toggleZoom'
+    'dblclick .board': 'toggleNewWidget'
   initialize: (params) ->
     @collection = params.user
 
@@ -23,16 +22,14 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
 
     this
 
-  # Backbone seems to have trouble with two separate double click actions.
-  # Let's delegate from here.
-  doubleClickHandler: (e) =>
-    if $('#container').hasClass('editing')
-      @toggleNewWidget(e)
-    else
-      @toggleZoom(e)
-
   toggleZoom: (e) ->
+    e.preventDefault()
     $('#container').toggleClass('zoomed-in')
+    if $('#container').hasClass('zoomed-in')
+      $("#zoom-toggle").text('Zoom Out')
+    else
+      $("#zoom-toggle").text('Zoom In')
+
 
   toggleNewWidget: (e) ->
     e.preventDefault()
@@ -44,7 +41,9 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   toggleEditWidgets: (e) ->
     e.preventDefault()
 
-    $("#container").removeClass('zoomed-in')
+    # FIXME: Due to various jQuery nonsense, draggable elements will be erratic when zoomed in.
+    #        One solution is to half all the movements, however the collision detection is still terrible.
+    #$("#container").removeClass('zoomed-in')
     $widgets = $('.widget')
 
     if $("#container").hasClass('editing')
@@ -59,6 +58,7 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
     else
       $(e.target).text("Done Editing")
       $("#container").addClass('editing')
+      Boardwalk.flashMessage("Double click anywhere to add new content.")
       @setDraggable()
 
   setDraggable: (e) =>

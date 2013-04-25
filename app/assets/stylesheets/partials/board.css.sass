@@ -17,9 +17,6 @@ $navigate-prefix: "Visit "
 
   &.zoomed-in
     .board
-      cursor: zoom-out
-      cursor: -moz-zoom-out
-      cursor: -webkit-zoom-out
       +transform(scale(2.0))
       +transform-origin(0 0)
 
@@ -59,9 +56,9 @@ $navigate-prefix: "Visit "
   +transform(scale(1.0))
   +transform-origin(0 0)
 
-  cursor: -moz-zoom-in
-  cursor: -webkit-zoom-in
-  cursor: zoom-in
+  cursor: -moz-grab
+  cursor: -webkit-grab
+  cursor: grab
 
   &.panning
     +panning

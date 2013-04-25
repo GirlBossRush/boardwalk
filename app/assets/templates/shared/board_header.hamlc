@@ -21,6 +21,8 @@
         %li
           %a#edit-widgets(href="#edit-widgets") Edit
 
+      %li
+        %a#zoom-toggle(href='#zoom-toggle') Zoom In
   %aside#flash.message-center
     .accent ❖
     %ul.messages
