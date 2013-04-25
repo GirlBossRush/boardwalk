@@ -101,6 +101,9 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
   deleteWidget: (e) ->
     e.preventDefault()
 
+    # Callback hell.
+    _setDraggable = @setDraggable
+
     $widget = $(e.target).parents('.widget')
 
     widgetModel = @collection.widgets.get($widget.attr('id'))
@@ -109,6 +112,12 @@ class Boardwalk.Views.BoardLayout extends Backbone.View
         wait: true
         success: ->
           $widget.remove()
+          # REFACTOR: Now this is interesting. Since all the widgets are
+          # droppable as well, we need to reset every widget otherwise
+          # we get an error from jQuery when any widget is moved because
+          # it is looking for a missing drop point.
+          _setDraggable()
+
   rootURL: (e) ->
     e.preventDefault()
     Backbone.history.navigate('/', true)
