@@ -47,12 +47,14 @@
                           name: 'user[neighbors][]',
                           value: neighbor.username,
                           readonly: true,
+                          autocomplete: 'off',
                           pattern: "^[a-zA-Z0-9\-_]+$"}
 
 
       - if @user.get('neighbors').length < 4
         != JST['users/new_neighbor']()
 
-    %label{for: 'user-submit'} Submit
-    %input#user-submit{type: 'submit', value: 'Save'}
+      %datalist#user-search{autocomplete: 'off'}
+
+    %a#user-submit.btn{href: '#user-submit'} Save
 

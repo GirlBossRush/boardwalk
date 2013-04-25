@@ -8,24 +8,42 @@ class Boardwalk.Views.UsersEdit extends Backbone.View
   newNeighbor: JST['users/new_neighbor']
 
   events:
-    'submit #edit-user': 'updateUser'
+    'click #user-submit': 'updateUser'
     'click .delete-neighbor': 'deleteNeighbor'
     'keyup #user-password-confirmation': 'checkPassword'
     'keyup .user-new-neighbor': 'addNeighborToForm'
+
   render: ->
-    $(@el).html(@template(user: @model))
+    @$el.html(@template(user: @model))
+
     @$('time').timeago()
     this
 
-  addNeighborToForm: (e) ->
+  addNeighborToForm: (e) =>
+    $input = $(e.target)
+    $el = @$el
+
     if e.keyCode == 13 # Enter
+      # "Add" neighbor to form.
       e.preventDefault()
-      $input = $(e.target)
       $input.parent(".field").removeClass('writable')
       $input.prop('readonly', true)
 
       $(".user-neighbors").append(@newNeighbor())
       $(".user-neighbors .user-new-neighbor:last").focus()
+
+    else if e.keyCode not in [9, 18, 37, 38, 39, 40] and not e.ctrlKey
+      # The user must be searching for a neighbor username.
+      username = $input.val()
+      $dataList = $el.find('#user-search')
+
+      if username.length > 0
+        $.getJSON "/api/search/#{username}", {}, (response) ->
+          $dataList.empty()
+          _.each response, (user) ->
+            $dataList.append("<option value='#{user.username}'>#{user.email}</option>")
+
+
 
   deleteNeighbor: (e) ->
     e.preventDefault()
@@ -36,9 +54,7 @@ class Boardwalk.Views.UsersEdit extends Backbone.View
 
   updateUser: (e) ->
     e.preventDefault()
-
-    $form = $(e.target)
-    attributes = $form.serializeForm()
+    attributes = @$el.serializeForm()
     @model.set(attributes.user)
     @model.save null,
       wait: true

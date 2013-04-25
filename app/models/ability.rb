@@ -8,6 +8,7 @@ class Ability
     can :read, User
     can :update, User, id: @user.id
     can :check, User
+    can :search, User
 
     can :create, Widget, user_id: @user.id
     can :update, Widget, user_id: @user.id

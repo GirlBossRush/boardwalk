@@ -35,4 +35,10 @@ class UsersController < ApplicationController
       respond_with(available: true, message: "Username is available.")
     end
   end
+
+  def search
+    users = User.where(username: /#{params[:username]}/i).entries
+
+    respond_with users
+  end
 end

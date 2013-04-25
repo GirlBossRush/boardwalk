@@ -45,14 +45,16 @@ class User
     #           we should collect all the users not in the neighbor_names,
     #           then remove them one by one.
 
-    self.neighbors.clear
-    users = []
-    neighbor_names.reject!(&:blank?)
+    unless neighbor_names.nil?
+      self.neighbors.clear
+      users = []
+      neighbor_names.reject!(&:blank?)
 
-    neighbor_names[0...4].each do |name|
-      users << User.where(_slugs: /^#{name}$/i).first
+      neighbor_names[0...4].each do |name|
+        users << User.where(_slugs: /^#{name}$/i).first
+      end
+      self.neighbors << users
     end
-    self.neighbors << users
   end
 
   # The JSON representation of the neighbor data does not reflect the database

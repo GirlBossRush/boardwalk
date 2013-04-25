@@ -31,7 +31,7 @@ class Boardwalk.Views.UsersNew extends Backbone.View
   checkUsername: (e) ->
     $input = $(e.target)
     username = $input.val()
-    $.getJSON "api/check/#{username}", {}, (response) ->
+    $.getJSON "/api/check/#{username}", {}, (response) ->
       if response.available == false
         $input[0].setCustomValidity(response.message)
       else

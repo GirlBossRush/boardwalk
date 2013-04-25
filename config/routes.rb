@@ -4,8 +4,9 @@ Boardwalk::Application.routes.draw do
     resources :users do
       resources :widgets
     end
-    resources :sessions
+    get 'search/:username', to: 'users#search', as: 'search'
     get 'check/:username', to: 'users#check', as: 'check'
+    resources :sessions
   end
 
   root to: 'pages#index'
