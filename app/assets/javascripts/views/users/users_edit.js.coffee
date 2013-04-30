@@ -20,6 +20,8 @@ class Boardwalk.Views.UsersEdit extends Backbone.View
     this
 
   addNeighborToForm: (e) =>
+    # TODO: A new neighbor form should be added when the user has
+    #       4 neighbors to begin with and deletes one.
     $input = $(e.target)
     $el = @$el
 
